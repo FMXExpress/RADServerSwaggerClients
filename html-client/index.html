@@ -1,0 +1,3526 @@
+<!doctype html>
+<html>
+  <head>
+    <title>EMS API Documentation</title>
+    <style type="text/css">
+      body {
+	font-family: Trebuchet MS, sans-serif;
+	font-size: 15px;
+	color: #444;
+	margin-right: 24px;
+}
+
+h1	{
+	font-size: 25px;
+}
+h2	{
+	font-size: 20px;
+}
+h3	{
+	font-size: 16px;
+	font-weight: bold;
+}
+hr	{
+	height: 1px;
+	border: 0;
+	color: #ddd;
+	background-color: #ddd;
+}
+
+.app-desc {
+  clear: both;
+  margin-left: 20px;
+}
+.param-name {
+  width: 100%;
+}
+.license-info {
+  margin-left: 20px;
+}
+
+.license-url {
+  margin-left: 20px;
+}
+
+.model {
+  margin: 0 0 0px 20px;
+}
+
+.method {
+  margin-left: 20px;
+}
+
+.method-notes	{
+	margin: 10px 0 20px 0;
+	font-size: 90%;
+	color: #555;
+}
+
+pre {
+  padding: 10px;
+  margin-bottom: 2px;
+}
+
+.http-method {
+ text-transform: uppercase;
+}
+
+pre.get {
+  background-color: #0f6ab4;
+}
+
+pre.post {
+  background-color: #10a54a;
+}
+
+pre.put {
+  background-color: #c5862b;
+}
+
+pre.delete {
+  background-color: #a41e22;
+}
+
+.huge	{
+	color: #fff;
+}
+
+pre.example {
+  background-color: #f3f3f3;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+code {
+  white-space: pre;
+}
+
+.nickname {
+  font-weight: bold;
+}
+
+.method-path {
+  font-size: 1.5em;
+  background-color: #0f6ab4;
+}
+
+.up {
+  float:right;
+}
+
+.parameter {
+  width: 500px;
+}
+
+.param {
+  width: 500px;
+  padding: 10px 0 0 20px;
+  font-weight: bold;
+}
+
+.param-desc {
+  width: 700px;
+  padding: 0 0 0 20px;
+  color: #777;
+}
+
+.param-type {
+  font-style: italic;
+}
+
+.param-enum-header {
+width: 700px;
+padding: 0 0 0 60px;
+color: #777;
+font-weight: bold;
+}
+
+.param-enum {
+width: 700px;
+padding: 0 0 0 80px;
+color: #777;
+font-style: italic;
+}
+
+.field-label {
+  padding: 0;
+  margin: 0;
+  clear: both;
+}
+
+.field-items	{
+	padding: 0 0 15px 0;
+	margin-bottom: 15px;
+}
+
+.return-type {
+  clear: both;
+  padding-bottom: 10px;
+}
+
+.param-header {
+  font-weight: bold;
+}
+
+.method-tags {
+  text-align: right;
+}
+
+.method-tag {
+  background: none repeat scroll 0% 0% #24A600;
+  border-radius: 3px;
+  padding: 2px 10px;
+  margin: 2px;
+  color: #FFF;
+  display: inline-block;
+  text-decoration: none;
+}
+
+    </style>
+  </head>
+  <body>
+  <h1>EMS API Documentation</h1>
+    <div class="app-desc"><p>Enterprise Mobility Services API</p>
+<p><a href="https://www.embarcadero.com/products/rad-studio/enterprise-mobility-services">Learn about EMS</a></p>
+<p>EMS (Enterprise Mobility Services) offers a Mobile Enterprise Application Platform (MEAP)</p>
+<p>TurnKey Middleware for Interconnected Distributed Apps</p>
+</div>
+    <div class="app-desc">More information: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+    <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+    <div class="app-desc">Version: 0.0.0</div>
+    <div class="app-desc">BasePath:/</div>
+    <div class="license-info">All rights reserved</div>
+    <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+  <h2>Access</h2>
+
+  <h2><a name="__Methods">Methods</a></h2>
+  [ Jump to <a href="#__Models">Models</a> ]
+
+  <h3>Table of Contents </h3>
+  <div class="method-summary"></div>
+  <h4><a href="#ApiDoc">ApiDoc</a></h4>
+  <ul>
+  <li><a href="#aPI"><code><span class="http-method">get</span> /api</code></a></li>
+  <li><a href="#getAPIJSONFormat"><code><span class="http-method">get</span> /api/apidoc.json</code></a></li>
+  <li><a href="#getAPIYAMLFormat"><code><span class="http-method">get</span> /api/apidoc.yaml</code></a></li>
+  <li><a href="#getAPIYAMLFormat EndPoint"><code><span class="http-method">get</span> /api/{item}/apidoc.yaml</code></a></li>
+  </ul>
+  <h4><a href="#EdgeModules">EdgeModules</a></h4>
+  <ul>
+  <li><a href="#getModule"><code><span class="http-method">get</span> /edgemodules/{mname}</code></a></li>
+  <li><a href="#getModuleResource"><code><span class="http-method">get</span> /edgemodules/{mname}/resources/{name}</code></a></li>
+  <li><a href="#getModuleResources"><code><span class="http-method">get</span> /edgemodules/{mname}/resources</code></a></li>
+  <li><a href="#getModules"><code><span class="http-method">get</span> /edgemodules</code></a></li>
+  <li><a href="#getModulesFields"><code><span class="http-method">get</span> /edgemodules/fields</code></a></li>
+  <li><a href="#getResources"><code><span class="http-method">get</span> /edgemodules/resources</code></a></li>
+  <li><a href="#getResourcesFields"><code><span class="http-method">get</span> /edgemodules/resources/fields</code></a></li>
+  <li><a href="#registerModule"><code><span class="http-method">post</span> /edgemodules</code></a></li>
+  <li><a href="#registerModuleResource"><code><span class="http-method">post</span> /edgemodules/{mname}/resources</code></a></li>
+  <li><a href="#unregisterModule"><code><span class="http-method">delete</span> /edgemodules/{mname}</code></a></li>
+  <li><a href="#unregisterModuleResource"><code><span class="http-method">delete</span> /edgemodules/{mname}/resources/{name}</code></a></li>
+  <li><a href="#updateModule"><code><span class="http-method">put</span> /edgemodules/{mname}</code></a></li>
+  <li><a href="#updateModuleResource"><code><span class="http-method">put</span> /edgemodules/{mname}/resources/{name}</code></a></li>
+  </ul>
+  <h4><a href="#EdgeModulesInvokers">EdgeModulesInvokers</a></h4>
+  <ul>
+  <li><a href="#deleteResourceEndpoint"><code><span class="http-method">delete</span> /edgemodules/{mname}/{rname}</code></a></li>
+  <li><a href="#deleteResourceEndpointItem"><code><span class="http-method">delete</span> /edgemodules/{mname}/{rname}/{wildcard}</code></a></li>
+  <li><a href="#getResourceEndpoint"><code><span class="http-method">get</span> /edgemodules/{mname}/{rname}</code></a></li>
+  <li><a href="#getResourceEndpointItem"><code><span class="http-method">get</span> /edgemodules/{mname}/{rname}/{wildcard}</code></a></li>
+  <li><a href="#patchResourceEndpoint"><code><span class="http-method">patch</span> /edgemodules/{mname}/{rname}</code></a></li>
+  <li><a href="#patchResourceEndpointItem"><code><span class="http-method">patch</span> /edgemodules/{mname}/{rname}/{wildcard}</code></a></li>
+  <li><a href="#postResourceEndpoint"><code><span class="http-method">post</span> /edgemodules/{mname}/{rname}</code></a></li>
+  <li><a href="#postResourceEndpointItem"><code><span class="http-method">post</span> /edgemodules/{mname}/{rname}/{wildcard}</code></a></li>
+  <li><a href="#putResourceEndpoint"><code><span class="http-method">put</span> /edgemodules/{mname}/{rname}</code></a></li>
+  <li><a href="#putResourceEndpointItem"><code><span class="http-method">put</span> /edgemodules/{mname}/{rname}/{wildcard}</code></a></li>
+  </ul>
+  <h4><a href="#Groups">Groups</a></h4>
+  <ul>
+  <li><a href="#addGroup"><code><span class="http-method">post</span> /groups</code></a></li>
+  <li><a href="#deleteGroup"><code><span class="http-method">delete</span> /groups/{item}</code></a></li>
+  <li><a href="#getGroup"><code><span class="http-method">get</span> /groups/{item}</code></a></li>
+  <li><a href="#getGroupFields"><code><span class="http-method">get</span> /groups/fields</code></a></li>
+  <li><a href="#getGroups"><code><span class="http-method">get</span> /groups</code></a></li>
+  <li><a href="#updateGroup"><code><span class="http-method">put</span> /groups/{item}</code></a></li>
+  </ul>
+  <h4><a href="#Installations">Installations</a></h4>
+  <ul>
+  <li><a href="#addInstallation"><code><span class="http-method">post</span> /installations</code></a></li>
+  <li><a href="#deleteInstallation"><code><span class="http-method">delete</span> /installations/{id}</code></a></li>
+  <li><a href="#getChannels"><code><span class="http-method">get</span> /installations/channels</code></a></li>
+  <li><a href="#getInstallation"><code><span class="http-method">get</span> /installations/{id}</code></a></li>
+  <li><a href="#getInstallationFields"><code><span class="http-method">get</span> /installations/fields</code></a></li>
+  <li><a href="#getInstallations"><code><span class="http-method">get</span> /installations</code></a></li>
+  <li><a href="#updateInstallation"><code><span class="http-method">put</span> /installations/{id}</code></a></li>
+  </ul>
+  <h4><a href="#Push">Push</a></h4>
+  <ul>
+  <li><a href="#send"><code><span class="http-method">post</span> /push</code></a></li>
+  </ul>
+  <h4><a href="#Users">Users</a></h4>
+  <ul>
+  <li><a href="#addUser"><code><span class="http-method">post</span> /users</code></a></li>
+  <li><a href="#deleteUser"><code><span class="http-method">delete</span> /users/{id}</code></a></li>
+  <li><a href="#getUser"><code><span class="http-method">get</span> /users/{id}</code></a></li>
+  <li><a href="#getUserFields"><code><span class="http-method">get</span> /users/fields</code></a></li>
+  <li><a href="#getUserGroups"><code><span class="http-method">get</span> /users/{id}/groups</code></a></li>
+  <li><a href="#getUsers"><code><span class="http-method">get</span> /users</code></a></li>
+  <li><a href="#loginUser"><code><span class="http-method">post</span> /users/login</code></a></li>
+  <li><a href="#logoutUser"><code><span class="http-method">post</span> /users/logout</code></a></li>
+  <li><a href="#signupUser"><code><span class="http-method">post</span> /users/signup</code></a></li>
+  <li><a href="#updateUser"><code><span class="http-method">put</span> /users/{id}</code></a></li>
+  </ul>
+  <h4><a href="#Version">Version</a></h4>
+  <ul>
+  <li><a href="#getVersion"><code><span class="http-method">get</span> /version</code></a></li>
+  </ul>
+
+  <h1><a name="ApiDoc">ApiDoc</a></h1>
+  <div class="method"><a name="aPI"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api</code></pre></div>
+    <div class="method-summary">Get API EndPoints (<span class="nickname">aPI</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all the API EndPoints.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getAPIJSONFormat"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/apidoc.json</code></pre></div>
+    <div class="method-summary">Get JSON (<span class="nickname">getAPIJSONFormat</span>)</div>
+    <div class="method-notes">Get API in JSON format</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getAPIYAMLFormat"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/apidoc.yaml</code></pre></div>
+    <div class="method-summary">Get YAML (<span class="nickname">getAPIYAMLFormat</span>)</div>
+    <div class="method-notes">Get API in YAML format</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getAPIYAMLFormat EndPoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /api/{item}/apidoc.yaml</code></pre></div>
+    <div class="method-summary">Get API EndPoint (<span class="nickname">getAPIYAMLFormat EndPoint</span>)</div>
+    <div class="method-notes">|
+Used to retrieve an EndPoint for the API EndPoints.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">item (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Path Segment to an EndPoint </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="EdgeModules">EdgeModules</a></h1>
+  <div class="method"><a name="getModule"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/{mname}</code></pre></div>
+    <div class="method-summary">Get Module (<span class="nickname">getModule</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from <code>EdgeModule</code>.
+Optional query param of <strong>skip, limit, order, where</strong> determines
+size of returned array, filtered and order by.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleObject">edgeModuleObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "protocol" : "protocol",
+  "protocolprops" : "protocolprops",
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#edgeModuleObject">edgeModuleObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getModuleResource"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/{mname}/resources/{name}</code></pre></div>
+    <div class="method-summary">Get EdgeModule Resource (<span class="nickname">getModuleResource</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from a resource of an EdgeModule. <strong>mname</strong> is the unique EMS EdgeModule identifier in the EMS database. <strong>resourcename</strong> is the name of the resource.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div><div class="param">name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleResourceObject">edgeModuleResourceObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "resourcename" : "resourcename",
+  "moduleid" : "moduleid"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#edgeModuleResourceObject">edgeModuleResourceObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getModuleResources"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/{mname}/resources</code></pre></div>
+    <div class="method-summary">Get EdgeModule Resources (<span class="nickname">getModuleResources</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from the resources of an EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#edgeModuleResourceObject">edgeModuleResourceObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "resourcename" : "resourcename",
+  "moduleid" : "moduleid"
+}, {
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "resourcename" : "resourcename",
+  "moduleid" : "moduleid"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getModules"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules</code></pre></div>
+    <div class="method-summary">Get Module (<span class="nickname">getModules</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from <code>EdgeModule</code>.
+Optional query param of <strong>skip, limit, order, where</strong> determines
+size of returned array, filtered and order by.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#edgeModuleObject">edgeModuleObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "protocol" : "protocol",
+  "protocolprops" : "protocolprops",
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id"
+}, {
+  "protocol" : "protocol",
+  "protocolprops" : "protocolprops",
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getModulesFields"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/fields</code></pre></div>
+    <div class="method-summary">Get Fields (<span class="nickname">getModulesFields</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all the <code>field names</code> of the EMS EdgeModule (including the custom fields).</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#fieldsEdgeModuleObject">fieldsEdgeModuleObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#fieldsEdgeModuleObject">fieldsEdgeModuleObject</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getResources"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/resources</code></pre></div>
+    <div class="method-summary">Get EdgeModules Resources (<span class="nickname">getResources</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from the resources of all EdgeModules.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#edgeModuleResourceObject">edgeModuleResourceObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "resourcename" : "resourcename",
+  "moduleid" : "moduleid"
+}, {
+  "modulename" : "modulename",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "resourcename" : "resourcename",
+  "moduleid" : "moduleid"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getResourcesFields"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/resources/fields</code></pre></div>
+    <div class="method-summary">Get Resource Fields (<span class="nickname">getResourcesFields</span>)</div>
+    <div class="method-notes">|
+Used to retrieve the <code>field names</code> of all the resources of the EMS EdgeModule (including the custom fields).</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#fieldsEdgeModuleObject">fieldsEdgeModuleObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#fieldsEdgeModuleObject">fieldsEdgeModuleObject</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="registerModule"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /edgemodules</code></pre></div>
+    <div class="method-summary">Add Module (<span class="nickname">registerModule</span>)</div>
+    <div class="method-notes">|
+Used to add a new <code>EdgeModule</code> object to the EMS database.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#edgeModuleAddObject">edgeModuleAddObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; EdgeModule object to add. protocolprops example string {&quot;port&quot;:8082,&quot;host&quot;:&quot;10.150.40.52&quot;} </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleAddedObject">edgeModuleAddedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "modulename" : "modulename",
+  "_id" : "_id"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    OK
+        <a href="#edgeModuleAddedObject">edgeModuleAddedObject</a>
+    <h4 class="field-label">404</h4>
+    Unexpexted Request Body
+        <a href="#"></a>
+    <h4 class="field-label">409</h4>
+    Module already exist
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="registerModuleResource"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /edgemodules/{mname}/resources</code></pre></div>
+    <div class="method-summary">Add Module Resource (<span class="nickname">registerModuleResource</span>)</div>
+    <div class="method-notes">|
+Used to register a new resource from an EMS EdgeModule. <strong>mname</strong> is the unique EMS EdgeModule identifier in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#edgeModuleResourceAddObject">edgeModuleResourceAddObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; EdgModule Resource add object. protocolprops string example {&quot;port&quot;:8082,&quot;host&quot;:&quot;10.150.40.52&quot;} </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleResourceAddedObject">edgeModuleResourceAddedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "resourcename" : "resourcename"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#edgeModuleResourceAddedObject">edgeModuleResourceAddedObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="unregisterModule"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /edgemodules/{mname}</code></pre></div>
+    <div class="method-summary">Delete Module (<span class="nickname">unregisterModule</span>)</div>
+    <div class="method-notes">|
+Used to delete an <code>EdgeModule Resource</code>. <strong>mname</strong> is the unique EMS EdgeModule identifier (MID) in the EMS database. <strong>resourcename</strong> is the name of the resource.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="unregisterModuleResource"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /edgemodules/{mname}/resources/{name}</code></pre></div>
+    <div class="method-summary">Delete Module Resource (<span class="nickname">unregisterModuleResource</span>)</div>
+    <div class="method-notes">|
+Used to delete an <code>EdgeModule Resource</code>. <strong>mname</strong> is the unique EMS EdgeModule identifier (MID) in the EMS database. <strong>resourcename</strong> is the name of the resource.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div><div class="param">name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateModule"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /edgemodules/{mname}</code></pre></div>
+    <div class="method-summary">Update Module (<span class="nickname">updateModule</span>)</div>
+    <div class="method-notes">|
+Used to update an <code>EdgeModule</code>. <strong>mname</strong> is the unique EMS EdgeModule identifier (MID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#edgeModuleUpdateObject">edgeModuleUpdateObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; EdgModule Resource add object. protocolprops string example {&quot;port&quot;:8082,&quot;host&quot;:&quot;10.150.40.52&quot;} </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleUpdatedObject">edgeModuleUpdatedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated" : "updated"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#edgeModuleUpdatedObject">edgeModuleUpdatedObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateModuleResource"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /edgemodules/{mname}/resources/{name}</code></pre></div>
+    <div class="method-summary">Update Module Resource (<span class="nickname">updateModuleResource</span>)</div>
+    <div class="method-notes">|
+Used to update an <code>EdgeModule</code>. <strong>mname</strong> is the unique EMS EdgeModule identifier (MID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule identifier </div><div class="param">name (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#edgeModuleResourceUpdateObject">edgeModuleResourceUpdateObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; EdgModule Resource add object. protocolprops string example {&quot;port&quot;:8082,&quot;host&quot;:&quot;10.150.40.52&quot;} </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#edgeModuleResourceUpdatedObject">edgeModuleResourceUpdatedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated" : "updated"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#edgeModuleResourceUpdatedObject">edgeModuleResourceUpdatedObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="EdgeModulesInvokers">EdgeModulesInvokers</a></h1>
+  <div class="method"><a name="deleteResourceEndpoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /edgemodules/{mname}/{rname}</code></pre></div>
+    <div class="method-summary">Invoke Resource Delete Method (<span class="nickname">deleteResourceEndpoint</span>)</div>
+    <div class="method-notes">Used to invoke the DELETE method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteResourceEndpointItem"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /edgemodules/{mname}/{rname}/{wildcard}</code></pre></div>
+    <div class="method-summary">Invoke Resource/* Delete Method (<span class="nickname">deleteResourceEndpointItem</span>)</div>
+    <div class="method-notes">Used to invoke the DELETE method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div><div class="param">wildcard (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the Wild card part of the URL </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getResourceEndpoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/{mname}/{rname}</code></pre></div>
+    <div class="method-summary">Invoke Resource Get Method (<span class="nickname">getResourceEndpoint</span>)</div>
+    <div class="method-notes">Used to invoke the GET method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getResourceEndpointItem"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /edgemodules/{mname}/{rname}/{wildcard}</code></pre></div>
+    <div class="method-summary">Invoke Resource/* Get Method (<span class="nickname">getResourceEndpointItem</span>)</div>
+    <div class="method-notes">Used to invoke the GET method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div><div class="param">wildcard (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the Wild card part of the URL </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="patchResourceEndpoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /edgemodules/{mname}/{rname}</code></pre></div>
+    <div class="method-summary">Invoke Resource Patch Method (<span class="nickname">patchResourceEndpoint</span>)</div>
+    <div class="method-notes">Used to invoke the PATCH method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="patchResourceEndpointItem"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="patch"><code class="huge"><span class="http-method">patch</span> /edgemodules/{mname}/{rname}/{wildcard}</code></pre></div>
+    <div class="method-summary">Invoke Resource/* Patch Method (<span class="nickname">patchResourceEndpointItem</span>)</div>
+    <div class="method-notes">Used to invoke the PATCH method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div><div class="param">wildcard (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the Wild card part of the URL </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postResourceEndpoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /edgemodules/{mname}/{rname}</code></pre></div>
+    <div class="method-summary">Invoke Resource Post Method (<span class="nickname">postResourceEndpoint</span>)</div>
+    <div class="method-notes">Used to invoke the POST method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="postResourceEndpointItem"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /edgemodules/{mname}/{rname}/{wildcard}</code></pre></div>
+    <div class="method-summary">Invoke Resource/* Post Method (<span class="nickname">postResourceEndpointItem</span>)</div>
+    <div class="method-notes">Used to invoke the POST method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div><div class="param">wildcard (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the Wild card part of the URL </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="putResourceEndpoint"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /edgemodules/{mname}/{rname}</code></pre></div>
+    <div class="method-summary">Invoke Resource Put Method (<span class="nickname">putResourceEndpoint</span>)</div>
+    <div class="method-notes">Used to invoke the PUT method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="putResourceEndpointItem"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /edgemodules/{mname}/{rname}/{wildcard}</code></pre></div>
+    <div class="method-summary">Invoke Resource/* Put Method (<span class="nickname">putResourceEndpointItem</span>)</div>
+    <div class="method-notes">Used to invoke the PUT method of the resource from an existing EMS EdgeModule.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">mname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the EMS EdgeModule name </div><div class="param">rname (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the unique EMS EdgeModule Resource name </div><div class="param">wildcard (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; Is the Wild card part of the URL </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#object">object</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Body Object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Groups">Groups</a></h1>
+  <div class="method"><a name="addGroup"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /groups</code></pre></div>
+    <div class="method-summary">Add Group (<span class="nickname">addGroup</span>)</div>
+    <div class="method-notes">|
+Used to add a new <code>Group</code> object to the EMS database.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#groupAddObject">groupAddObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object to sign up a new EMS User in the EMS Server </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Group already exist
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteGroup"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /groups/{item}</code></pre></div>
+    <div class="method-summary">Delete Group (<span class="nickname">deleteGroup</span>)</div>
+    <div class="method-notes">|
+Used to delete a <code>Group</code>. <strong>item</strong> is the unique EMS Group name in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">item (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A group name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Group not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getGroup"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /groups/{item}</code></pre></div>
+    <div class="method-summary">Get Group (<span class="nickname">getGroup</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from a <code>Group</code>. <strong>item</strong> is the unique EMS Group name in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">item (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A group name </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#groupObject">groupObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "name" : "name",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "users" : [ "users", "users" ]
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#groupObject">groupObject</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getGroupFields"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /groups/fields</code></pre></div>
+    <div class="method-summary">Get Fields (<span class="nickname">getGroupFields</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all the <code>field names</code> of the EMS Group (including the custom fields).</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#fieldGroupObject">fieldGroupObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+}, {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getGroups"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /groups</code></pre></div>
+    <div class="method-summary">Get Groups (<span class="nickname">getGroups</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from <code>Groups</code>.
+Optional query param of <strong>skip, limit, order, where</strong> determines
+size of returned array, filtered and order by.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">skip (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; users skipped format: int32</div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of results to return </div><div class="param">order (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; order ascending or descending (asc, desc) </div><div class="param">where (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter operators (lt, lte, gt, gte, eq, neq, like, nlike) </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#groupObject">groupObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "name" : "name",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "users" : [ "users", "users" ]
+}, {
+  "name" : "name",
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "users" : [ "users", "users" ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateGroup"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /groups/{item}</code></pre></div>
+    <div class="method-summary">Update Group (<span class="nickname">updateGroup</span>)</div>
+    <div class="method-notes">|
+Used to update a <code>Group</code>. <strong>item</strong> is the unique EMS Group name in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">item (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A group name </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#updateGroupObject">updateGroupObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object to sign up a new EMS User in the EMS Server </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#updatedGroupObject">updatedGroupObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated" : "updated"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#updatedGroupObject">updatedGroupObject</a>
+    <h4 class="field-label">404</h4>
+    Group not found / User not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Installations">Installations</a></h1>
+  <div class="method"><a name="addInstallation"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /installations</code></pre></div>
+    <div class="method-summary">Add Installation (<span class="nickname">addInstallation</span>)</div>
+    <div class="method-notes">|
+Used to add a new <code>Installation</code> object to the EMS database.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#installationAddObject">installationAddObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object to sign up a new EMS User in the EMS Server </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#installationAddedObject">installationAddedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "_id" : "_id"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    OK
+        <a href="#installationAddedObject">installationAddedObject</a>
+    <h4 class="field-label">404</h4>
+    Installation already exists
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteInstallation"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /installations/{id}</code></pre></div>
+    <div class="method-summary">Delete Installation (<span class="nickname">deleteInstallation</span>)</div>
+    <div class="method-notes">|
+Used to delete an <code>Installation</code>. <strong>id</strong> is the unique EMS Installation identifier (IID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A Installation ID </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getChannels"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /installations/channels</code></pre></div>
+    <div class="method-summary">Get Installation Channels (<span class="nickname">getChannels</span>)</div>
+    <div class="method-notes">|
+Used to retrieve the available channels to which the device has subscribed. <strong>id</strong> is the unique EMS Installation identifier (InstallationID) in the EMS database.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#channelName">channelName</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ { }, { } ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getInstallation"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /installations/{id}</code></pre></div>
+    <div class="method-summary">Get Installation (<span class="nickname">getInstallation</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from a specific <code>Installation</code> (registered device). <strong>id</strong> is the unique EMS Installation identifier (InstallationID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A Installation ID </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#installationObject">installationObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "deviceType" : "ios",
+  "channels" : [ "channels", "channels" ],
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id",
+  "deviceToken" : "deviceToken"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#installationObject">installationObject</a>
+    <h4 class="field-label">404</h4>
+    Group not found / User not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getInstallationFields"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /installations/fields</code></pre></div>
+    <div class="method-summary">Get Fields (<span class="nickname">getInstallationFields</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all the <code>field names</code> of the EMS Installation (including the custom fields).</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#fieldInstallationObject">fieldInstallationObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+}, {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getInstallations"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /installations</code></pre></div>
+    <div class="method-summary">Get Installations (<span class="nickname">getInstallations</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from <code>Installation</code>.
+Optional query param of <strong>skip, limit, order, where</strong> determines
+size of returned array, filtered and order by.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">skip (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; users skipped format: int32</div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of results to return </div><div class="param">order (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; order ascending or descending (asc, desc) </div><div class="param">where (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter operators (lt, lte, gt, gte, eq, neq, like, nlike) </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#installationObject">installationObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "deviceType" : "ios",
+  "channels" : [ "channels", "channels" ],
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id",
+  "deviceToken" : "deviceToken"
+}, {
+  "deviceType" : "ios",
+  "channels" : [ "channels", "channels" ],
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "_id" : "_id",
+  "deviceToken" : "deviceToken"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateInstallation"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /installations/{id}</code></pre></div>
+    <div class="method-summary">Update Installation (<span class="nickname">updateInstallation</span>)</div>
+    <div class="method-notes">|
+Used to update an <code>Installation</code>. <strong>id</strong> is the unique EMS Installation identifier (IID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A Installation ID </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#updateInstallationObject">updateInstallationObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Installation fields to update </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#updatedInstallationObject">updatedInstallationObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated" : "updated"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#updatedInstallationObject">updatedInstallationObject</a>
+    <h4 class="field-label">404</h4>
+    Not Found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Push">Push</a></h1>
+  <div class="method"><a name="send"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /push</code></pre></div>
+    <div class="method-summary">Send Push (<span class="nickname">send</span>)</div>
+    <div class="method-notes">Used to send a push notification message to a registered device</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#pushObject">pushObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object containing the Push Message data structure </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Users">Users</a></h1>
+  <div class="method"><a name="addUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users</code></pre></div>
+    <div class="method-summary">Add User (<span class="nickname">addUser</span>)</div>
+    <div class="method-notes">|
+Used to add a new <code>User</code> object to the EMS database.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#userCredentialsObject">userCredentialsObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object to add a new EMS User in the EMS Server </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#useridObject">useridObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "_id" : "_id"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">201</h4>
+    User Created
+        <a href="#useridObject">useridObject</a>
+    <h4 class="field-label">409</h4>
+    User already exists
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="deleteUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="delete"><code class="huge"><span class="http-method">delete</span> /users/{id}</code></pre></div>
+    <div class="method-summary">Delete User (<span class="nickname">deleteUser</span>)</div>
+    <div class="method-notes">|
+Used to delete a <code>User</code>. <strong>id</strong> is the unique EMS User identifier (UID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A user ID </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">204</h4>
+    No Content
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    The request does not identify a known application, resource, endpoint, or entity
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{id}</code></pre></div>
+    <div class="method-summary">Get User (<span class="nickname">getUser</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from a <code>User</code>. <strong>id</strong> is the unique EMS User identifier (UID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A user ID </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#userObject">userObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "id" : "id",
+  "username" : "username"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#userObject">userObject</a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUserFields"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/fields</code></pre></div>
+    <div class="method-summary">Get Fields (<span class="nickname">getUserFields</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all the <code>field names</code> of the EMS Users (including the custom fields).</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#fieldObject">fieldObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+}, {
+  "custom" : true,
+  "name" : "name",
+  "fields" : [ {
+    "name" : "name"
+  }, {
+    "name" : "name"
+  } ]
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUserGroups"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users/{id}/groups</code></pre></div>
+    <div class="method-summary">Get User Groups (<span class="nickname">getUserGroups</span>)</div>
+    <div class="method-notes">|
+Used to retrieve the EMS Groups the EMS User belongs to. <strong>id</strong> is the unique EMS User identifier (UID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A user ID </div>
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#groupName">groupName</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ { }, { } ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="getUsers"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /users</code></pre></div>
+    <div class="method-summary">Get Users (<span class="nickname">getUsers</span>)</div>
+    <div class="method-notes">|
+Used to retrieve all data from <code>Users</code>.
+Optional query param of <strong>skip, limit, order, where</strong> determines
+size of returned array, filtered and order by.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Query parameters</h3>
+    <div class="field-items">
+      <div class="param">skip (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; users skipped format: int32</div><div class="param">limit (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; maximum number of results to return </div><div class="param">order (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; order ascending or descending (asc, desc) </div><div class="param">where (optional)</div>
+
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; filter operators (lt, lte, gt, gte, eq, neq, like, nlike) </div>
+    </div>  <!-- field-items -->
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      array[<a href="#userObject">userObject</a>]
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>[ {
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "id" : "id",
+  "username" : "username"
+}, {
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "id" : "id",
+  "username" : "username"
+} ]</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        
+    <h4 class="field-label">400</h4>
+    Bad Request
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="loginUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/login</code></pre></div>
+    <div class="method-summary">Log In (<span class="nickname">loginUser</span>)</div>
+    <div class="method-notes">|
+Logs in to the EMS Server with a specific EMS User.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#userCredentialsObject">userCredentialsObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; A user object </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#userTokenObject">userTokenObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "_meta" : {
+    "creator" : "creator",
+    "created" : "created",
+    "updated" : "updated"
+  },
+  "id" : "id",
+  "sessiontoken" : "sessiontoken",
+  "username" : "username"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#userTokenObject">userTokenObject</a>
+    <h4 class="field-label">401</h4>
+    The credentials of the request are not authorized for the requested operation.
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="logoutUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/logout</code></pre></div>
+    <div class="method-summary">sPostLogoutSummaryTitle (<span class="nickname">logoutUser</span>)</div>
+    <div class="method-notes">sPostLogoutSummaryDesc</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#"></a>
+    <h4 class="field-label">404</h4>
+    User not found
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="signupUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="post"><code class="huge"><span class="http-method">post</span> /users/signup</code></pre></div>
+    <div class="method-summary">Sign Up  User (<span class="nickname">signupUser</span>)</div>
+    <div class="method-notes">|
+Signs up to the EMS Server with an appropriate EMS User.</div>
+
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#userCredentialsObject">userCredentialsObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Object to sign up a new EMS User in the EMS Server </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#userSignUpResponseObject">userSignUpResponseObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "sessionToken" : "sessionToken",
+  "_id" : "_id"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#userSignUpResponseObject">userSignUpResponseObject</a>
+    <h4 class="field-label">409</h4>
+    User already exists
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <div class="method"><a name="updateUser"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="put"><code class="huge"><span class="http-method">put</span> /users/{id}</code></pre></div>
+    <div class="method-summary">Update User (<span class="nickname">updateUser</span>)</div>
+    <div class="method-notes">|
+Used to update a <code>User</code>. <strong>id</strong> is the unique EMS User identifier (UID) in the EMS database.</div>
+
+    <h3 class="field-label">Path parameters</h3>
+    <div class="field-items">
+      <div class="param">id (required)</div>
+
+      <div class="param-desc"><span class="param-type">Path Parameter</span> &mdash; A user ID </div>
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Consumes</h3>
+    This API call consumes the following media types via the <span class="header">Content-Type</span> request header:
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Request body</h3>
+    <div class="field-items">
+      <div class="param">body <a href="#updateObject">updateObject</a> (required)</div>
+
+      <div class="param-desc"><span class="param-type">Body Parameter</span> &mdash; Add any fieldName </div>
+
+    </div>  <!-- field-items -->
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#updatedObject">updatedObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "updated" : "updated"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    OK
+        <a href="#updatedObject">updatedObject</a>
+    <h4 class="field-label">400</h4>
+    Operation could not be completed because one or more dynamic names conflicts with a static name.
+        <a href="#"></a>
+  </div> <!-- method -->
+  <hr/>
+  <h1><a name="Version">Version</a></h1>
+  <div class="method"><a name="getVersion"/>
+    <div class="method-path">
+    <a class="up" href="#__Methods">Up</a>
+    <pre class="get"><code class="huge"><span class="http-method">get</span> /version</code></pre></div>
+    <div class="method-summary">Get version (<span class="nickname">getVersion</span>)</div>
+    <div class="method-notes">|
+Used to retrieve the <code>Version</code> of the EMS Server.</div>
+
+
+
+
+    <h3 class="field-label">Request headers</h3>
+    <div class="field-items">
+      
+    </div>  <!-- field-items -->
+
+
+
+    <h3 class="field-label">Return type</h3>
+    <div class="return-type">
+      <a href="#versionObject">versionObject</a>
+      
+    </div>
+
+    <!--Todo: process Response Object and its headers, schema, examples -->
+
+    <h3 class="field-label">Example data</h3>
+    <div class="example-data-content-type">Content-Type: application/json</div>
+    <pre class="example"><code>{
+  "server" : "server",
+  "version" : "version"
+}</code></pre>
+
+    <h3 class="field-label">Produces</h3>
+    This API call produces the following media types according to the <span class="header">Accept</span> request header;
+    the media type will be conveyed by the <span class="header">Content-Type</span> response header.
+    <ul>
+      <li><code>application/json</code></li>
+    </ul>
+
+    <h3 class="field-label">Responses</h3>
+    <h4 class="field-label">200</h4>
+    Ok. Provides the current version of the EMS Server
+        <a href="#versionObject">versionObject</a>
+  </div> <!-- method -->
+  <hr/>
+
+  <h2><a name="__Models">Models</a></h2>
+  [ Jump to <a href="#__Methods">Methods</a> ]
+
+  <h3>Table of Contents</h3>
+  <ol>
+    <li><a href="#_metaEdgeModuleObject"><code>_metaEdgeModuleObject</code> - </a></li>
+    <li><a href="#_metaGroupObject"><code>_metaGroupObject</code> - </a></li>
+    <li><a href="#_metaInstallationObject"><code>_metaInstallationObject</code> - </a></li>
+    <li><a href="#_metaObject"><code>_metaObject</code> - </a></li>
+    <li><a href="#channelName"><code>channelName</code> - </a></li>
+    <li><a href="#edgeModuleAddObject"><code>edgeModuleAddObject</code> - </a></li>
+    <li><a href="#edgeModuleAddedObject"><code>edgeModuleAddedObject</code> - </a></li>
+    <li><a href="#edgeModuleObject"><code>edgeModuleObject</code> - </a></li>
+    <li><a href="#edgeModuleResourceAddObject"><code>edgeModuleResourceAddObject</code> - </a></li>
+    <li><a href="#edgeModuleResourceAddedObject"><code>edgeModuleResourceAddedObject</code> - </a></li>
+    <li><a href="#edgeModuleResourceObject"><code>edgeModuleResourceObject</code> - </a></li>
+    <li><a href="#edgeModuleResourceUpdateObject"><code>edgeModuleResourceUpdateObject</code> - </a></li>
+    <li><a href="#edgeModuleResourceUpdatedObject"><code>edgeModuleResourceUpdatedObject</code> - </a></li>
+    <li><a href="#edgeModuleUpdateObject"><code>edgeModuleUpdateObject</code> - </a></li>
+    <li><a href="#edgeModuleUpdatedObject"><code>edgeModuleUpdatedObject</code> - </a></li>
+    <li><a href="#fieldGroupObject"><code>fieldGroupObject</code> - </a></li>
+    <li><a href="#fieldInstallationObject"><code>fieldInstallationObject</code> - </a></li>
+    <li><a href="#fieldObject"><code>fieldObject</code> - </a></li>
+    <li><a href="#fieldObject_fields"><code>fieldObject_fields</code> - </a></li>
+    <li><a href="#fieldsEdgeModuleObject"><code>fieldsEdgeModuleObject</code> - </a></li>
+    <li><a href="#groupAddObject"><code>groupAddObject</code> - </a></li>
+    <li><a href="#groupName"><code>groupName</code> - </a></li>
+    <li><a href="#groupObject"><code>groupObject</code> - </a></li>
+    <li><a href="#installationAddObject"><code>installationAddObject</code> - </a></li>
+    <li><a href="#installationAddedObject"><code>installationAddedObject</code> - </a></li>
+    <li><a href="#installationObject"><code>installationObject</code> - </a></li>
+    <li><a href="#pushDataObject"><code>pushDataObject</code> - </a></li>
+    <li><a href="#pushDataObject_aps"><code>pushDataObject_aps</code> - </a></li>
+    <li><a href="#pushDataObject_extras"><code>pushDataObject_extras</code> - </a></li>
+    <li><a href="#pushDataObject_gcm"><code>pushDataObject_gcm</code> - </a></li>
+    <li><a href="#pushObject"><code>pushObject</code> - </a></li>
+    <li><a href="#pushWhereObject"><code>pushWhereObject</code> - </a></li>
+    <li><a href="#pushWhereObject_deviceToken"><code>pushWhereObject_deviceToken</code> - </a></li>
+    <li><a href="#updateGroupObject"><code>updateGroupObject</code> - </a></li>
+    <li><a href="#updateInstallationObject"><code>updateInstallationObject</code> - </a></li>
+    <li><a href="#updateObject"><code>updateObject</code> - </a></li>
+    <li><a href="#updatedGroupObject"><code>updatedGroupObject</code> - </a></li>
+    <li><a href="#updatedInstallationObject"><code>updatedInstallationObject</code> - </a></li>
+    <li><a href="#updatedObject"><code>updatedObject</code> - </a></li>
+    <li><a href="#userCredentialsObject"><code>userCredentialsObject</code> - </a></li>
+    <li><a href="#userObject"><code>userObject</code> - </a></li>
+    <li><a href="#userSignUpResponseObject"><code>userSignUpResponseObject</code> - </a></li>
+    <li><a href="#userTokenObject"><code>userTokenObject</code> - </a></li>
+    <li><a href="#useridObject"><code>useridObject</code> - </a></li>
+    <li><a href="#versionObject"><code>versionObject</code> - </a></li>
+  </ol>
+
+  <div class="model">
+    <h3><a name="_metaEdgeModuleObject"><code>_metaEdgeModuleObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">creator </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_metaGroupObject"><code>_metaGroupObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">creator </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_metaInstallationObject"><code>_metaInstallationObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">creator </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="_metaObject"><code>_metaObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">creator </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">created </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">updated (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="channelName"><code>channelName</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleAddObject"><code>edgeModuleAddObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">modulename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocol </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocolprops </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleAddedObject"><code>edgeModuleAddedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">modulename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleObject"><code>edgeModuleObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">modulename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocol </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocolprops </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaEdgeModuleObject">_metaEdgeModuleObject</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleResourceAddObject"><code>edgeModuleResourceAddObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resourcename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleResourceAddedObject"><code>edgeModuleResourceAddedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resourcename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleResourceObject"><code>edgeModuleResourceObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resourcename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">modulename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">moduleid </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaEdgeModuleObject">_metaEdgeModuleObject</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleResourceUpdateObject"><code>edgeModuleResourceUpdateObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">resourcename (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleResourceUpdatedObject"><code>edgeModuleResourceUpdatedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">updated </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleUpdateObject"><code>edgeModuleUpdateObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">modulename </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocol </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">protocolprops </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="edgeModuleUpdatedObject"><code>edgeModuleUpdatedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">updated </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="fieldGroupObject"><code>fieldGroupObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#fieldObject_fields">array[fieldObject_fields]</a></span>  </div>
+<div class="param">custom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="fieldInstallationObject"><code>fieldInstallationObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#fieldObject_fields">array[fieldObject_fields]</a></span>  </div>
+<div class="param">custom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="fieldObject"><code>fieldObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#fieldObject_fields">array[fieldObject_fields]</a></span>  </div>
+<div class="param">custom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="fieldObject_fields"><code>fieldObject_fields</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">name (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="fieldsEdgeModuleObject"><code>fieldsEdgeModuleObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">fields (optional)</div><div class="param-desc"><span class="param-type"><a href="#fieldObject_fields">array[fieldObject_fields]</a></span>  </div>
+<div class="param">custom (optional)</div><div class="param-desc"><span class="param-type"><a href="#boolean">Boolean</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="groupAddObject"><code>groupAddObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">groupname </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="groupName"><code>groupName</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+          </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="groupObject"><code>groupObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">name </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaGroupObject">_metaGroupObject</a></span>  </div>
+<div class="param">users (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="installationAddObject"><code>installationAddObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">deviceToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">deviceType </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">channels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="installationAddedObject"><code>installationAddedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="installationObject"><code>installationObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">deviceToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">deviceType </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">ios</div><div class="param-enum">android</div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaInstallationObject">_metaInstallationObject</a></span>  </div>
+<div class="param">channels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushDataObject"><code>pushDataObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">gcm (optional)</div><div class="param-desc"><span class="param-type"><a href="#pushDataObject_gcm">pushDataObject_gcm</a></span>  </div>
+<div class="param">aps (optional)</div><div class="param-desc"><span class="param-type"><a href="#pushDataObject_aps">pushDataObject_aps</a></span>  </div>
+<div class="param">extras (optional)</div><div class="param-desc"><span class="param-type"><a href="#pushDataObject_extras">pushDataObject_extras</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushDataObject_aps"><code>pushDataObject_aps</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">alert (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">badge (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">sound (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushDataObject_extras"><code>pushDataObject_extras</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushDataObject_gcm"><code>pushDataObject_gcm</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    
+    <div class="field-items">
+      <div class="param">message (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">title (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushObject"><code>pushObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">data </div><div class="param-desc"><span class="param-type"><a href="#pushDataObject">pushDataObject</a></span>  </div>
+<div class="param">channels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+<div class="param">where </div><div class="param-desc"><span class="param-type"><a href="#pushWhereObject">pushWhereObject</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushWhereObject"><code>pushWhereObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">deviceType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+        <div class="param-enum-header">Enum:</div>
+        <div class="param-enum">ios</div><div class="param-enum">android</div>
+<div class="param">deviceToken (optional)</div><div class="param-desc"><span class="param-type"><a href="#pushWhereObject_deviceToken">pushWhereObject_deviceToken</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="pushWhereObject_deviceToken"><code>pushWhereObject_deviceToken</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'>$in</div>
+    <div class="field-items">
+      <div class="param">$in </div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updateGroupObject"><code>updateGroupObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">fieldName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">users (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updateInstallationObject"><code>updateInstallationObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">channels (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">array[String]</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updateObject"><code>updateObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">fieldName (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updatedGroupObject"><code>updatedGroupObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">updated </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updatedInstallationObject"><code>updatedInstallationObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">updated </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="updatedObject"><code>updatedObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">updated </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="userCredentialsObject"><code>userCredentialsObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">username </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">password </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="userObject"><code>userObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">username </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaObject">_metaObject</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="userSignUpResponseObject"><code>userSignUpResponseObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">sessionToken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="userTokenObject"><code>userTokenObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">username </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">_meta </div><div class="param-desc"><span class="param-type"><a href="#_metaObject">_metaObject</a></span>  </div>
+<div class="param">sessiontoken </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="useridObject"><code>useridObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">_id </div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  <div class="model">
+    <h3><a name="versionObject"><code>versionObject</code> - </a> <a class="up" href="#__Models">Up</a></h3>
+    <div class='model-description'></div>
+    <div class="field-items">
+      <div class="param">version (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+<div class="param">server (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span>  </div>
+    </div>  <!-- field-items -->
+  </div>
+  </body>
+</html>

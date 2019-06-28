@@ -1,0 +1,2815 @@
+h1. EMS API Documentation Enterprise Mobility Services API      [Learn about EMS](https://www.embarcadero.com/products/rad-studio/enterprise-mobility-services)      EMS (Enterprise Mobility Services) offers a Mobile Enterprise Application Platform (MEAP)      TurnKey Middleware for Interconnected Distributed Apps
+
+*Version:* 0.0.0
+
+----
+
+{toc:printable=true|style=square|minLevel=2|maxLevel=3|type=list|outline=false|include=.*}
+
+h2. Endpoints
+
+    h3. aPI
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /api
+    {code}
+    *Summary:* Get API EndPoints
+    *Description:*  |      Used to retrieve all the API EndPoints.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getAPIJSONFormat
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /api/apidoc.json
+    {code}
+    *Summary:* Get JSON
+    *Description:* Get API in JSON format
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getAPIYAMLFormat
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /api/apidoc.yaml
+    {code}
+    *Summary:* Get YAML
+    *Description:* Get API in YAML format
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getAPIYAMLFormat EndPoint
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /api/{item}/apidoc.yaml
+    {code}
+    *Summary:* Get API EndPoint
+    *Description:*  |      Used to retrieve an EndPoint for the API EndPoints.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |item |Path Segment to an EndPoint |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getModule
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/{mname}
+    {code}
+    *Summary:* Get Module
+    *Description:*  |      Used to retrieve all data from &#x60;EdgeModule&#x60;.      Optional query param of **skip, limit, order, where** determines       size of returned array, filtered and order by.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. getModuleResource
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/{mname}/resources/{name}
+    {code}
+    *Summary:* Get EdgeModule Resource
+    *Description:*  |      Used to retrieve all data from a resource of an EdgeModule. **mname** is the unique EMS EdgeModule identifier in the EMS database. **resourcename** is the name of the resource.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+|name |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleResourceObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleResourceObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. getModuleResources
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/{mname}/resources
+    {code}
+    *Summary:* Get EdgeModule Resources
+    *Description:*  |      Used to retrieve all data from the resources of an EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[edgeModuleResourceObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/edgeModuleResourceObject"
+    }
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. getModules
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules
+    {code}
+    *Summary:* Get Module
+    *Description:*  |      Used to retrieve all data from &#x60;EdgeModule&#x60;.      Optional query param of **skip, limit, order, where** determines       size of returned array, filtered and order by.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[edgeModuleObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/edgeModuleObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getModulesFields
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/fields
+    {code}
+    *Summary:* Get Fields
+    *Description:*  |      Used to retrieve all the &#x60;field names&#x60; of the EMS EdgeModule (including the custom fields).
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+fieldsEdgeModuleObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/fieldsEdgeModuleObject"
+  }
+}
+        {code}
+    ----
+
+    h3. getResources
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/resources
+    {code}
+    *Summary:* Get EdgeModules Resources
+    *Description:*  |      Used to retrieve all data from the resources of all EdgeModules.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[edgeModuleResourceObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/edgeModuleResourceObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getResourcesFields
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/resources/fields
+    {code}
+    *Summary:* Get Resource Fields
+    *Description:*  |      Used to retrieve the &#x60;field names&#x60; of all the resources of the EMS EdgeModule (including the custom fields).
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+fieldsEdgeModuleObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/fieldsEdgeModuleObject"
+  }
+}
+        {code}
+    ----
+
+    h3. registerModule
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /edgemodules
+    {code}
+    *Summary:* Add Module
+    *Description:*  |      Used to add a new &#x60;EdgeModule&#x60; object to the EMS database.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |EdgeModule object to add. protocolprops example string {\\\&quot;port\\\&quot;:8082,\\\&quot;host\\\&quot;:\\\&quot;10.150.40.52\\\&quot;} |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 201
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleAddedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleAddedObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Unexpexted Request Body
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Unexpexted Request Body"
+}
+        {code}
+        *Status Code:* 409
+        *Message:*     Module already exist
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Module already exist"
+}
+        {code}
+    ----
+
+    h3. registerModuleResource
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /edgemodules/{mname}/resources
+    {code}
+    *Summary:* Add Module Resource
+    *Description:*  |      Used to register a new resource from an EMS EdgeModule. **mname** is the unique EMS EdgeModule identifier in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |EdgModule Resource add object. protocolprops string example {\\\&quot;port\\\&quot;:8082,\\\&quot;host\\\&quot;:\\\&quot;10.150.40.52\\\&quot;} |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleResourceAddedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleResourceAddedObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. unregisterModule
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /edgemodules/{mname}
+    {code}
+    *Summary:* Delete Module
+    *Description:*  |      Used to delete an &#x60;EdgeModule Resource&#x60;. **mname** is the unique EMS EdgeModule identifier (MID) in the EMS database. **resourcename** is the name of the resource.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 204
+        *Message:*     No Content
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "No Content"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. unregisterModuleResource
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /edgemodules/{mname}/resources/{name}
+    {code}
+    *Summary:* Delete Module Resource
+    *Description:*  |      Used to delete an &#x60;EdgeModule Resource&#x60;. **mname** is the unique EMS EdgeModule identifier (MID) in the EMS database. **resourcename** is the name of the resource.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+|name |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 204
+        *Message:*     No Content
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "No Content"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. updateModule
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /edgemodules/{mname}
+    {code}
+    *Summary:* Update Module
+    *Description:*  |      Used to update an &#x60;EdgeModule&#x60;. **mname** is the unique EMS EdgeModule identifier (MID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |EdgModule Resource add object. protocolprops string example {\\\&quot;port\\\&quot;:8082,\\\&quot;host\\\&quot;:\\\&quot;10.150.40.52\\\&quot;} |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleUpdatedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleUpdatedObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. updateModuleResource
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /edgemodules/{mname}/resources/{name}
+    {code}
+    *Summary:* Update Module Resource
+    *Description:*  |      Used to update an &#x60;EdgeModule&#x60;. **mname** is the unique EMS EdgeModule identifier (MID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the unique EMS EdgeModule identifier |(/) | |  |
+
+|name |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |EdgModule Resource add object. protocolprops string example {\\\&quot;port\\\&quot;:8082,\\\&quot;host\\\&quot;:\\\&quot;10.150.40.52\\\&quot;} |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+edgeModuleResourceUpdatedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/edgeModuleResourceUpdatedObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. deleteResourceEndpoint
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /edgemodules/{mname}/{rname}
+    {code}
+    *Summary:* Invoke Resource Delete Method
+    *Description:* Used to invoke the DELETE method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. deleteResourceEndpointItem
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /edgemodules/{mname}/{rname}/{wildcard}
+    {code}
+    *Summary:* Invoke Resource/* Delete Method
+    *Description:* Used to invoke the DELETE method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+|wildcard |Is the Wild card part of the URL |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getResourceEndpoint
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/{mname}/{rname}
+    {code}
+    *Summary:* Invoke Resource Get Method
+    *Description:* Used to invoke the GET method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. getResourceEndpointItem
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /edgemodules/{mname}/{rname}/{wildcard}
+    {code}
+    *Summary:* Invoke Resource/* Get Method
+    *Description:* Used to invoke the GET method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+|wildcard |Is the Wild card part of the URL |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. patchResourceEndpoint
+    {status:colour=Yellow|title=patch|subtle=false}
+    {code}
+    patch /edgemodules/{mname}/{rname}
+    {code}
+    *Summary:* Invoke Resource Patch Method
+    *Description:* Used to invoke the PATCH method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. patchResourceEndpointItem
+    {status:colour=Yellow|title=patch|subtle=false}
+    {code}
+    patch /edgemodules/{mname}/{rname}/{wildcard}
+    {code}
+    *Summary:* Invoke Resource/* Patch Method
+    *Description:* Used to invoke the PATCH method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+|wildcard |Is the Wild card part of the URL |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. postResourceEndpoint
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /edgemodules/{mname}/{rname}
+    {code}
+    *Summary:* Invoke Resource Post Method
+    *Description:* Used to invoke the POST method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. postResourceEndpointItem
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /edgemodules/{mname}/{rname}/{wildcard}
+    {code}
+    *Summary:* Invoke Resource/* Post Method
+    *Description:* Used to invoke the POST method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+|wildcard |Is the Wild card part of the URL |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. putResourceEndpoint
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /edgemodules/{mname}/{rname}
+    {code}
+    *Summary:* Invoke Resource Put Method
+    *Description:* Used to invoke the PUT method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. putResourceEndpointItem
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /edgemodules/{mname}/{rname}/{wildcard}
+    {code}
+    *Summary:* Invoke Resource/* Put Method
+    *Description:* Used to invoke the PUT method of the resource from an existing EMS EdgeModule.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |mname |Is the EMS EdgeModule name |(/) | |  |
+
+|rname |Is the unique EMS EdgeModule Resource name |(/) | |  |
+
+|wildcard |Is the Wild card part of the URL |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Body Object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. addGroup
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /groups
+    {code}
+    *Summary:* Add Group
+    *Description:*  |      Used to add a new &#x60;Group&#x60; object to the EMS database.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object to sign up a new EMS User in the EMS Server |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Group already exist
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Group already exist"
+}
+        {code}
+    ----
+
+    h3. deleteGroup
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /groups/{item}
+    {code}
+    *Summary:* Delete Group
+    *Description:*  |      Used to delete a &#x60;Group&#x60;. **item** is the unique EMS Group name in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |item |A group name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 204
+        *Message:*     No Content
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "No Content"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Group not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Group not found"
+}
+        {code}
+    ----
+
+    h3. getGroup
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /groups/{item}
+    {code}
+    *Summary:* Get Group
+    *Description:*  |      Used to retrieve all data from a &#x60;Group&#x60;. **item** is the unique EMS Group name in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |item |A group name |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+groupObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/groupObject"
+  }
+}
+        {code}
+    ----
+
+    h3. getGroupFields
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /groups/fields
+    {code}
+    *Summary:* Get Fields
+    *Description:*  |      Used to retrieve all the &#x60;field names&#x60; of the EMS Group (including the custom fields).
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[fieldGroupObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/fieldGroupObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getGroups
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /groups
+    {code}
+    *Summary:* Get Groups
+    *Description:*  |      Used to retrieve all data from &#x60;Groups&#x60;.      Optional query param of **skip, limit, order, where** determines       size of returned array, filtered and order by.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |skip |users skipped |(x) | |  |
+
+|limit |maximum number of results to return |(x) | |  |
+
+|order |order ascending or descending (asc, desc) |(x) | |  |
+
+|where |filter operators (lt, lte, gt, gte, eq, neq, like, nlike) |(x) | |  |
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[groupObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/groupObject"
+    }
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     Bad Request
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Bad Request"
+}
+        {code}
+    ----
+
+    h3. updateGroup
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /groups/{item}
+    {code}
+    *Summary:* Update Group
+    *Description:*  |      Used to update a &#x60;Group&#x60;. **item** is the unique EMS Group name in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |item |A group name |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object to sign up a new EMS User in the EMS Server |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+updatedGroupObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/updatedGroupObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Group not found / User not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Group not found / User not found"
+}
+        {code}
+    ----
+
+    h3. addInstallation
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /installations
+    {code}
+    *Summary:* Add Installation
+    *Description:*  |      Used to add a new &#x60;Installation&#x60; object to the EMS database.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object to sign up a new EMS User in the EMS Server |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 201
+        *Message:*     OK
+        {code:title=Response Type}
+installationAddedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/installationAddedObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Installation already exists
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Installation already exists"
+}
+        {code}
+    ----
+
+    h3. deleteInstallation
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /installations/{id}
+    {code}
+    *Summary:* Delete Installation
+    *Description:*  |      Used to delete an &#x60;Installation&#x60;. **id** is the unique EMS Installation identifier (IID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A Installation ID |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 204
+        *Message:*     No Content
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "No Content"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. getChannels
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /installations/channels
+    {code}
+    *Summary:* Get Installation Channels
+    *Description:*  |       Used to retrieve the available channels to which the device has subscribed. **id** is the unique EMS Installation identifier (InstallationID) in the EMS database.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[channelName]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/channelName"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getInstallation
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /installations/{id}
+    {code}
+    *Summary:* Get Installation
+    *Description:*  |      Used to retrieve all data from a specific &#x60;Installation&#x60; (registered device). **id** is the unique EMS Installation identifier (InstallationID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A Installation ID |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+installationObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/installationObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Group not found / User not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Group not found / User not found"
+}
+        {code}
+    ----
+
+    h3. getInstallationFields
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /installations/fields
+    {code}
+    *Summary:* Get Fields
+    *Description:*  |      Used to retrieve all the &#x60;field names&#x60; of the EMS Installation (including the custom fields).
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[fieldInstallationObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/fieldInstallationObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getInstallations
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /installations
+    {code}
+    *Summary:* Get Installations
+    *Description:*  |      Used to retrieve all data from &#x60;Installation&#x60;.      Optional query param of **skip, limit, order, where** determines       size of returned array, filtered and order by.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |skip |users skipped |(x) | |  |
+
+|limit |maximum number of results to return |(x) | |  |
+
+|order |order ascending or descending (asc, desc) |(x) | |  |
+
+|where |filter operators (lt, lte, gt, gte, eq, neq, like, nlike) |(x) | |  |
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[installationObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/installationObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. updateInstallation
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /installations/{id}
+    {code}
+    *Summary:* Update Installation
+    *Description:*  |      Used to update an &#x60;Installation&#x60;. **id** is the unique EMS Installation identifier (IID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A Installation ID |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Installation fields to update |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+updatedInstallationObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/updatedInstallationObject"
+  }
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     Not Found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Not Found"
+}
+        {code}
+    ----
+
+    h3. send
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /push
+    {code}
+    *Summary:* Send Push
+    *Description:* Used to send a push notification message to a registered device
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object containing the Push Message data structure |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+    ----
+
+    h3. addUser
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /users
+    {code}
+    *Summary:* Add User
+    *Description:*  |      Used to add a new &#x60;User&#x60; object to the EMS database.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object to add a new EMS User in the EMS Server |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 201
+        *Message:*     User Created
+        {code:title=Response Type}
+useridObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "User Created",
+  "schema" : {
+    "$ref" : "#/definitions/useridObject"
+  }
+}
+        {code}
+        *Status Code:* 409
+        *Message:*     User already exists
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "User already exists"
+}
+        {code}
+    ----
+
+    h3. deleteUser
+    {status:colour=Yellow|title=delete|subtle=false}
+    {code}
+    delete /users/{id}
+    {code}
+    *Summary:* Delete User
+    *Description:*  |      Used to delete a &#x60;User&#x60;. **id** is the unique EMS User identifier (UID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A user ID |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 204
+        *Message:*     No Content
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "No Content"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     The request does not identify a known application, resource, endpoint, or entity
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "The request does not identify a known application, resource, endpoint, or entity"
+}
+        {code}
+    ----
+
+    h3. getUser
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /users/{id}
+    {code}
+    *Summary:* Get User
+    *Description:*  |      Used to retrieve all data from a &#x60;User&#x60;. **id** is the unique EMS User identifier (UID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A user ID |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+userObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/userObject"
+  }
+}
+        {code}
+    ----
+
+    h3. getUserFields
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /users/fields
+    {code}
+    *Summary:* Get Fields
+    *Description:*  |      Used to retrieve all the &#x60;field names&#x60; of the EMS Users (including the custom fields).
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[fieldObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/fieldObject"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getUserGroups
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /users/{id}/groups
+    {code}
+    *Summary:* Get User Groups
+    *Description:*  |      Used to retrieve the EMS Groups the EMS User belongs to. **id** is the unique EMS User identifier (UID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A user ID |(/) | |  |
+
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[groupName]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/groupName"
+    }
+  }
+}
+        {code}
+    ----
+
+    h3. getUsers
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /users
+    {code}
+    *Summary:* Get Users
+    *Description:*  |      Used to retrieve all data from &#x60;Users&#x60;.      Optional query param of **skip, limit, order, where** determines       size of returned array, filtered and order by.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+        h5. Query Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |skip |users skipped |(x) | |  |
+
+|limit |maximum number of results to return |(x) | |  |
+
+|order |order ascending or descending (asc, desc) |(x) | |  |
+
+|where |filter operators (lt, lte, gt, gte, eq, neq, like, nlike) |(x) | |  |
+
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+array[userObject]
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "type" : "array",
+    "items" : {
+      "$ref" : "#/definitions/userObject"
+    }
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     Bad Request
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Bad Request"
+}
+        {code}
+    ----
+
+    h3. loginUser
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /users/login
+    {code}
+    *Summary:* Log In
+    *Description:*  |      Logs in to the EMS Server with a specific EMS User.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |A user object |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+userTokenObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/userTokenObject"
+  }
+}
+        {code}
+        *Status Code:* 401
+        *Message:*     The credentials of the request are not authorized for the requested operation.
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "The credentials of the request are not authorized for the requested operation."
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     User not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "User not found"
+}
+        {code}
+    ----
+
+    h3. logoutUser
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /users/logout
+    {code}
+    *Summary:* sPostLogoutSummaryTitle
+    *Description:* sPostLogoutSummaryDesc
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK"
+}
+        {code}
+        *Status Code:* 404
+        *Message:*     User not found
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "User not found"
+}
+        {code}
+    ----
+
+    h3. signupUser
+    {status:colour=Yellow|title=post|subtle=false}
+    {code}
+    post /users/signup
+    {code}
+    *Summary:* Sign Up  User
+    *Description:*  |      Signs up to the EMS Server with an appropriate EMS User.
+
+
+    h4. Parameters
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Object to sign up a new EMS User in the EMS Server |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+userSignUpResponseObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/userSignUpResponseObject"
+  }
+}
+        {code}
+        *Status Code:* 409
+        *Message:*     User already exists
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "User already exists"
+}
+        {code}
+    ----
+
+    h3. updateUser
+    {status:colour=Yellow|title=put|subtle=false}
+    {code}
+    put /users/{id}
+    {code}
+    *Summary:* Update User
+    *Description:*  |      Used to update a &#x60;User&#x60;. **id** is the unique EMS User identifier (UID) in the EMS database.
+
+
+    h4. Parameters
+        h5. Path Parameters
+        ||Name||Description||Required||Default||Pattern||
+        |id |A user ID |(/) | |  |
+
+
+        h5. Body Parameter
+        ||Name||Description||Required||Default||Pattern||
+        |body |Add any fieldName |(/) | |  |
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     OK
+        {code:title=Response Type}
+updatedObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/updatedObject"
+  }
+}
+        {code}
+        *Status Code:* 400
+        *Message:*     Operation could not be completed because one or more dynamic names conflicts with a static name.
+        {code:title=Response Type}
+
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Operation could not be completed because one or more dynamic names conflicts with a static name."
+}
+        {code}
+    ----
+
+    h3. getVersion
+    {status:colour=Yellow|title=get|subtle=false}
+    {code}
+    get /version
+    {code}
+    *Summary:* Get version
+    *Description:*  |      Used to retrieve the &#x60;Version&#x60; of the EMS Server.
+
+
+    h4. Parameters
+
+
+        h5. Header Parameters
+        ||Name||Description||Required||Default||Pattern||
+        
+
+
+
+
+    h4. Responses
+        *Status Code:* 200
+        *Message:*     Ok. Provides the current version of the EMS Server
+        {code:title=Response Type}
+versionObject
+        {code}
+        See [#models]
+
+
+
+        {code:title=Response Schema |collapse=true}
+{
+  "description" : "Ok. Provides the current version of the EMS Server",
+  "schema" : {
+    "$ref" : "#/definitions/versionObject"
+  }
+}
+        {code}
+    ----
+
+h2. Models
+
+        h3. ChannelName
+        ||Field Name||Required||Type||Description||
+                h3. EdgeModuleAddObject
+        ||Field Name||Required||Type||Description||
+         |modulename | |String | |
+ |protocol | |String | |
+ |protocolprops | |String | |
+        h3. EdgeModuleAddedObject
+        ||Field Name||Required||Type||Description||
+         |_id | |String | |
+ |modulename | |String | |
+        h3. EdgeModuleObject
+        ||Field Name||Required||Type||Description||
+         |modulename | |String | |
+ |_id | |String | |
+ |protocol | |String | |
+ |protocolprops | |String | |
+ |_meta | |_metaEdgeModuleObject | |
+        h3. EdgeModuleResourceAddObject
+        ||Field Name||Required||Type||Description||
+         |resourcename | |String | |
+        h3. EdgeModuleResourceAddedObject
+        ||Field Name||Required||Type||Description||
+         |resourcename | |String | |
+        h3. EdgeModuleResourceObject
+        ||Field Name||Required||Type||Description||
+         |resourcename | |String | |
+ |modulename | |String | |
+ |moduleid | |String | |
+ |_meta | |_metaEdgeModuleObject | |
+        h3. EdgeModuleResourceUpdateObject
+        ||Field Name||Required||Type||Description||
+         |resourcename | |String | |
+        h3. EdgeModuleResourceUpdatedObject
+        ||Field Name||Required||Type||Description||
+         |updated | |String | |
+        h3. EdgeModuleUpdateObject
+        ||Field Name||Required||Type||Description||
+         |modulename | |String | |
+ |protocol | |String | |
+ |protocolprops | |String | |
+        h3. EdgeModuleUpdatedObject
+        ||Field Name||Required||Type||Description||
+         |updated | |String | |
+        h3. FieldGroupObject
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+ |fields | |array[fieldObject_fields] | |
+ |custom | |Boolean | |
+        h3. FieldInstallationObject
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+ |fields | |array[fieldObject_fields] | |
+ |custom | |Boolean | |
+        h3. FieldObject
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+ |fields | |array[fieldObject_fields] | |
+ |custom | |Boolean | |
+        h3. FieldObject_fields
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+        h3. FieldsEdgeModuleObject
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+ |fields | |array[fieldObject_fields] | |
+ |custom | |Boolean | |
+        h3. GroupAddObject
+        ||Field Name||Required||Type||Description||
+         |groupname | |String | |
+        h3. GroupName
+        ||Field Name||Required||Type||Description||
+                h3. GroupObject
+        ||Field Name||Required||Type||Description||
+         |name | |String | |
+ |_meta | |_metaGroupObject | |
+ |users | |array[String] | |
+        h3. InstallationAddObject
+        ||Field Name||Required||Type||Description||
+         |deviceToken | |String | |
+ |deviceType | |String | |
+ |channels | |array[String] | |
+        h3. InstallationAddedObject
+        ||Field Name||Required||Type||Description||
+         |_id | |String | |
+        h3. InstallationObject
+        ||Field Name||Required||Type||Description||
+         |_id | |String | |
+ |deviceToken | |String | |
+ |deviceType | |String | |
+ |_meta | |_metaInstallationObject | |
+ |channels | |array[String] | |
+        h3. PushDataObject
+        ||Field Name||Required||Type||Description||
+         |gcm | |pushDataObject_gcm | |
+ |aps | |pushDataObject_aps | |
+ |extras | |pushDataObject_extras | |
+        h3. PushDataObject_aps
+        ||Field Name||Required||Type||Description||
+         |alert | |String | |
+ |badge | |String | |
+ |sound | |String | |
+        h3. PushDataObject_extras
+        ||Field Name||Required||Type||Description||
+         |message | |String | |
+        h3. PushDataObject_gcm
+        ||Field Name||Required||Type||Description||
+         |message | |String | |
+ |title | |String | |
+        h3. PushObject
+        ||Field Name||Required||Type||Description||
+         |data | |pushDataObject | |
+ |channels | |array[String] | |
+ |where | |pushWhereObject | |
+        h3. PushWhereObject
+        ||Field Name||Required||Type||Description||
+         |deviceType | |String | |
+ |deviceToken | |pushWhereObject_deviceToken | |
+        h3. PushWhereObject_deviceToken
+        ||Field Name||Required||Type||Description||
+         |$in | |array[String] | |
+        h3. UpdateGroupObject
+        ||Field Name||Required||Type||Description||
+         |fieldName | |String | |
+ |users | |array[String] | |
+        h3. UpdateInstallationObject
+        ||Field Name||Required||Type||Description||
+         |channels | |array[String] | |
+        h3. UpdateObject
+        ||Field Name||Required||Type||Description||
+         |fieldName | |String | |
+        h3. UpdatedGroupObject
+        ||Field Name||Required||Type||Description||
+         |updated | |String | |
+        h3. UpdatedInstallationObject
+        ||Field Name||Required||Type||Description||
+         |updated | |String | |
+        h3. UpdatedObject
+        ||Field Name||Required||Type||Description||
+         |updated | |String | |
+        h3. UserCredentialsObject
+        ||Field Name||Required||Type||Description||
+         |username | |String | |
+ |password | |String | |
+        h3. UserObject
+        ||Field Name||Required||Type||Description||
+         |id | |String | |
+ |username | |String | |
+ |_meta | |_metaObject | |
+        h3. UserSignUpResponseObject
+        ||Field Name||Required||Type||Description||
+         |_id | |String | |
+ |sessionToken | |String | |
+        h3. UserTokenObject
+        ||Field Name||Required||Type||Description||
+         |id | |String | |
+ |username | |String | |
+ |_meta | |_metaObject | |
+ |sessiontoken | |String | |
+        h3. UseridObject
+        ||Field Name||Required||Type||Description||
+         |_id | |String | |
+        h3. VersionObject
+        ||Field Name||Required||Type||Description||
+         |version | |String | |
+ |server | |String | |
+        h3. _metaEdgeModuleObject
+        ||Field Name||Required||Type||Description||
+         |creator | |String | |
+ |created | |String | |
+ |updated | |String | |
+        h3. _metaGroupObject
+        ||Field Name||Required||Type||Description||
+         |creator | |String | |
+ |created | |String | |
+ |updated | |String | |
+        h3. _metaInstallationObject
+        ||Field Name||Required||Type||Description||
+         |creator | |String | |
+ |created | |String | |
+ |updated | |String | |
+        h3. _metaObject
+        ||Field Name||Required||Type||Description||
+         |creator | |String | |
+ |created | |String | |
+ |updated | |String | |

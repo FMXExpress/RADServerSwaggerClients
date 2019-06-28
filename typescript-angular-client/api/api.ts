@@ -1,0 +1,17 @@
+export * from './apiDoc.service';
+import { ApiDocService } from './apiDoc.service';
+export * from './edgeModules.service';
+import { EdgeModulesService } from './edgeModules.service';
+export * from './edgeModulesInvokers.service';
+import { EdgeModulesInvokersService } from './edgeModulesInvokers.service';
+export * from './groups.service';
+import { GroupsService } from './groups.service';
+export * from './installations.service';
+import { InstallationsService } from './installations.service';
+export * from './push.service';
+import { PushService } from './push.service';
+export * from './users.service';
+import { UsersService } from './users.service';
+export * from './version.service';
+import { VersionService } from './version.service';
+export const APIS = [ApiDocService, EdgeModulesService, EdgeModulesInvokersService, GroupsService, InstallationsService, PushService, UsersService, VersionService];

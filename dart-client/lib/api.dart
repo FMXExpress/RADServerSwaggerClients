@@ -1,0 +1,72 @@
+library swagger.api;
+
+import 'dart:async';
+import 'dart:convert';
+import 'package:http/browser_client.dart';
+import 'package:http/http.dart';
+
+part 'api_client.dart';
+part 'api_helper.dart';
+part 'api_exception.dart';
+part 'auth/authentication.dart';
+part 'auth/api_key_auth.dart';
+part 'auth/oauth.dart';
+part 'auth/http_basic_auth.dart';
+
+part 'api/api_doc_api.dart';
+part 'api/edge_modules_api.dart';
+part 'api/edge_modules_invokers_api.dart';
+part 'api/groups_api.dart';
+part 'api/installations_api.dart';
+part 'api/push_api.dart';
+part 'api/users_api.dart';
+part 'api/version_api.dart';
+
+part 'model/channel_name.dart';
+part 'model/edge_module_add_object.dart';
+part 'model/edge_module_added_object.dart';
+part 'model/edge_module_object.dart';
+part 'model/edge_module_resource_add_object.dart';
+part 'model/edge_module_resource_added_object.dart';
+part 'model/edge_module_resource_object.dart';
+part 'model/edge_module_resource_update_object.dart';
+part 'model/edge_module_resource_updated_object.dart';
+part 'model/edge_module_update_object.dart';
+part 'model/edge_module_updated_object.dart';
+part 'model/field_group_object.dart';
+part 'model/field_installation_object.dart';
+part 'model/field_object.dart';
+part 'model/field_object_fields.dart';
+part 'model/fields_edge_module_object.dart';
+part 'model/group_add_object.dart';
+part 'model/group_name.dart';
+part 'model/group_object.dart';
+part 'model/installation_add_object.dart';
+part 'model/installation_added_object.dart';
+part 'model/installation_object.dart';
+part 'model/meta_edge_module_object.dart';
+part 'model/meta_group_object.dart';
+part 'model/meta_installation_object.dart';
+part 'model/meta_object.dart';
+part 'model/push_data_object.dart';
+part 'model/push_data_object_aps.dart';
+part 'model/push_data_object_extras.dart';
+part 'model/push_data_object_gcm.dart';
+part 'model/push_object.dart';
+part 'model/push_where_object.dart';
+part 'model/push_where_object_device_token.dart';
+part 'model/update_group_object.dart';
+part 'model/update_installation_object.dart';
+part 'model/update_object.dart';
+part 'model/updated_group_object.dart';
+part 'model/updated_installation_object.dart';
+part 'model/updated_object.dart';
+part 'model/user_credentials_object.dart';
+part 'model/user_object.dart';
+part 'model/user_sign_up_response_object.dart';
+part 'model/user_token_object.dart';
+part 'model/userid_object.dart';
+part 'model/version_object.dart';
+
+
+ApiClient defaultApiClient = new ApiClient();

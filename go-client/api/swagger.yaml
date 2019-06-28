@@ -1,0 +1,2901 @@
+---
+swagger: "2.0"
+info:
+  description: "Enterprise Mobility Services API\r\n\r\n  [Learn about EMS](https://www.embarcadero.com/products/rad-studio/enterprise-mobility-services)\r\
+    \n\r\n  EMS (Enterprise Mobility Services) offers a Mobile Enterprise Application\
+    \ Platform (MEAP)\r\n\r\n  TurnKey Middleware for Interconnected Distributed Apps"
+  version: "0.0.0"
+  title: "EMS API Documentation"
+host: "localhost:8080"
+basePath: "/"
+schemes:
+- "http"
+paths:
+  /api:
+    get:
+      tags:
+      - "Api Doc"
+      summary: "Get API EndPoints"
+      description: " |\r\n    Used to retrieve all the API EndPoints."
+      operationId: "API"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+  /api/apidoc.json:
+    get:
+      tags:
+      - "Api Doc"
+      summary: "Get JSON"
+      description: "Get API in JSON format"
+      operationId: "GetAPIJSONFormat"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+  /api/apidoc.yaml:
+    get:
+      tags:
+      - "Api Doc"
+      summary: "Get YAML"
+      description: "Get API in YAML format"
+      operationId: "GetAPIYAMLFormat"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+  /api/{item}/apidoc.yaml:
+    get:
+      tags:
+      - "Api Doc"
+      summary: "Get API EndPoint"
+      description: " |\r\n    Used to retrieve an EndPoint for the API EndPoints."
+      operationId: "GetAPIYAMLFormat EndPoint"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "item"
+        in: "path"
+        description: "Path Segment to an EndPoint"
+        required: true
+        type: "string"
+        x-exportParamName: "Item"
+      responses:
+        200:
+          description: "OK"
+  /edgemodules:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get Module"
+      description: " |\r\n    Used to retrieve all data from `EdgeModule`.\r\n   \
+        \ Optional query param of **skip, limit, order, where** determines \r\n  \
+        \  size of returned array, filtered and order by."
+      operationId: "GetModules"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/edgeModuleObject"
+    post:
+      tags:
+      - "EdgeModules"
+      summary: "Add Module"
+      description: " |\r\n    Used to add a new `EdgeModule` object to the EMS database."
+      operationId: "RegisterModule"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "EdgeModule object to add. protocolprops example string {\\\"\
+          port\\\":8082,\\\"host\\\":\\\"10.150.40.52\\\"}"
+        required: true
+        schema:
+          $ref: "#/definitions/edgeModuleAddObject"
+        x-exportParamName: "Body"
+      responses:
+        201:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleAddedObject"
+        404:
+          description: "Unexpexted Request Body"
+        409:
+          description: "Module already exist"
+  /edgemodules/fields:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get Fields"
+      description: " |\r\n    Used to retrieve all the `field names` of the EMS EdgeModule\
+        \ (including the custom fields)."
+      operationId: "GetModulesFields"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/fieldsEdgeModuleObject"
+  /edgemodules/resources:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get EdgeModules Resources"
+      description: " |\r\n    Used to retrieve all data from the resources of all\
+        \ EdgeModules."
+      operationId: "GetResources"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/edgeModuleResourceObject"
+  /edgemodules/resources/fields:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get Resource Fields"
+      description: " |\r\n    Used to retrieve the `field names` of all the resources\
+        \ of the EMS EdgeModule (including the custom fields)."
+      operationId: "GetResourcesFields"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/fieldsEdgeModuleObject"
+  /edgemodules/{mname}:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get Module"
+      description: " |\r\n    Used to retrieve all data from `EdgeModule`.\r\n   \
+        \ Optional query param of **skip, limit, order, where** determines \r\n  \
+        \  size of returned array, filtered and order by."
+      operationId: "GetModule"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleObject"
+        404:
+          description: "Not Found"
+    put:
+      tags:
+      - "EdgeModules"
+      summary: "Update Module"
+      description: " |\r\n    Used to update an `EdgeModule`. **mname** is the unique\
+        \ EMS EdgeModule identifier (MID) in the EMS database."
+      operationId: "UpdateModule"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - in: "body"
+        name: "body"
+        description: "EdgModule Resource add object. protocolprops string example\
+          \ {\\\"port\\\":8082,\\\"host\\\":\\\"10.150.40.52\\\"}"
+        required: true
+        schema:
+          $ref: "#/definitions/edgeModuleUpdateObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleUpdatedObject"
+        404:
+          description: "Not Found"
+    delete:
+      tags:
+      - "EdgeModules"
+      summary: "Delete Module"
+      description: " |\r\n    Used to delete an `EdgeModule Resource`. **mname** is\
+        \ the unique EMS EdgeModule identifier (MID) in the EMS database. **resourcename**\
+        \ is the name of the resource."
+      operationId: "UnregisterModule"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      responses:
+        204:
+          description: "No Content"
+        404:
+          description: "Not Found"
+  /edgemodules/{mname}/resources:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get EdgeModule Resources"
+      description: " |\r\n    Used to retrieve all data from the resources of an EdgeModule."
+      operationId: "GetModuleResources"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/edgeModuleResourceObject"
+        404:
+          description: "Not Found"
+    post:
+      tags:
+      - "EdgeModules"
+      summary: "Add Module Resource"
+      description: " |\r\n    Used to register a new resource from an EMS EdgeModule.\
+        \ **mname** is the unique EMS EdgeModule identifier in the EMS database."
+      operationId: "RegisterModuleResource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - in: "body"
+        name: "body"
+        description: "EdgModule Resource add object. protocolprops string example\
+          \ {\\\"port\\\":8082,\\\"host\\\":\\\"10.150.40.52\\\"}"
+        required: true
+        schema:
+          $ref: "#/definitions/edgeModuleResourceAddObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleResourceAddedObject"
+        404:
+          description: "Not Found"
+  /edgemodules/{mname}/resources/{name}:
+    get:
+      tags:
+      - "EdgeModules"
+      summary: "Get EdgeModule Resource"
+      description: " |\r\n    Used to retrieve all data from a resource of an EdgeModule.\
+        \ **mname** is the unique EMS EdgeModule identifier in the EMS database. **resourcename**\
+        \ is the name of the resource."
+      operationId: "GetModuleResource"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "name"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Name"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleResourceObject"
+        404:
+          description: "Not Found"
+    put:
+      tags:
+      - "EdgeModules"
+      summary: "Update Module Resource"
+      description: " |\r\n    Used to update an `EdgeModule`. **mname** is the unique\
+        \ EMS EdgeModule identifier (MID) in the EMS database."
+      operationId: "UpdateModuleResource"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "name"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Name"
+      - in: "body"
+        name: "body"
+        description: "EdgModule Resource add object. protocolprops string example\
+          \ {\\\"port\\\":8082,\\\"host\\\":\\\"10.150.40.52\\\"}"
+        required: true
+        schema:
+          $ref: "#/definitions/edgeModuleResourceUpdateObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/edgeModuleResourceUpdatedObject"
+        404:
+          description: "Not Found"
+    delete:
+      tags:
+      - "EdgeModules"
+      summary: "Delete Module Resource"
+      description: " |\r\n    Used to delete an `EdgeModule Resource`. **mname** is\
+        \ the unique EMS EdgeModule identifier (MID) in the EMS database. **resourcename**\
+        \ is the name of the resource."
+      operationId: "UnregisterModuleResource"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule identifier"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "name"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Name"
+      responses:
+        204:
+          description: "No Content"
+        404:
+          description: "Not Found"
+  /edgemodules/{mname}/{rname}:
+    get:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource Get Method"
+      description: "Used to invoke the GET method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "GetResourceEndpoint"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      responses:
+        200:
+          description: "OK"
+    post:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource Post Method"
+      description: "Used to invoke the POST method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PostResourceEndpoint"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+    put:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource Put Method"
+      description: "Used to invoke the PUT method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PutResourceEndpoint"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+    delete:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource Delete Method"
+      description: "Used to invoke the DELETE method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "DeleteResourceEndpoint"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      responses:
+        200:
+          description: "OK"
+    patch:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource Patch Method"
+      description: "Used to invoke the PATCH method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PatchResourceEndpoint"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+  /edgemodules/{mname}/{rname}/{wildcard}:
+    get:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource/* Get Method"
+      description: "Used to invoke the GET method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "GetResourceEndpointItem"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - name: "wildcard"
+        in: "path"
+        description: "Is the Wild card part of the URL"
+        required: true
+        type: "string"
+        x-exportParamName: "Wildcard"
+      responses:
+        200:
+          description: "OK"
+    post:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource/* Post Method"
+      description: "Used to invoke the POST method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PostResourceEndpointItem"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - name: "wildcard"
+        in: "path"
+        description: "Is the Wild card part of the URL"
+        required: true
+        type: "string"
+        x-exportParamName: "Wildcard"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+    put:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource/* Put Method"
+      description: "Used to invoke the PUT method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PutResourceEndpointItem"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - name: "wildcard"
+        in: "path"
+        description: "Is the Wild card part of the URL"
+        required: true
+        type: "string"
+        x-exportParamName: "Wildcard"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+    delete:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource/* Delete Method"
+      description: "Used to invoke the DELETE method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "DeleteResourceEndpointItem"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - name: "wildcard"
+        in: "path"
+        description: "Is the Wild card part of the URL"
+        required: true
+        type: "string"
+        x-exportParamName: "Wildcard"
+      responses:
+        200:
+          description: "OK"
+    patch:
+      tags:
+      - "EdgeModules Invokers"
+      summary: "Invoke Resource/* Patch Method"
+      description: "Used to invoke the PATCH method of the resource from an existing\
+        \ EMS EdgeModule."
+      operationId: "PatchResourceEndpointItem"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "mname"
+        in: "path"
+        description: "Is the EMS EdgeModule name"
+        required: true
+        type: "string"
+        x-exportParamName: "Mname"
+      - name: "rname"
+        in: "path"
+        description: "Is the unique EMS EdgeModule Resource name"
+        required: true
+        type: "string"
+        x-exportParamName: "Rname"
+      - name: "wildcard"
+        in: "path"
+        description: "Is the Wild card part of the URL"
+        required: true
+        type: "string"
+        x-exportParamName: "Wildcard"
+      - in: "body"
+        name: "body"
+        description: "Body Object"
+        required: true
+        schema: {}
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+  /groups:
+    get:
+      tags:
+      - "Groups"
+      summary: "Get Groups"
+      description: " |\r\n    Used to retrieve all data from `Groups`.\r\n    Optional\
+        \ query param of **skip, limit, order, where** determines \r\n    size of\
+        \ returned array, filtered and order by."
+      operationId: "GetGroups"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "skip"
+        in: "query"
+        description: "users skipped"
+        required: false
+        type: "number"
+        format: "int32"
+        x-exportParamName: "Skip"
+        x-optionalDataType: "Float32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of results to return"
+        required: false
+        type: "number"
+        x-exportParamName: "Limit"
+        x-optionalDataType: "Float32"
+      - name: "order"
+        in: "query"
+        description: "order ascending or descending (asc, desc)"
+        required: false
+        type: "number"
+        x-exportParamName: "Order"
+        x-optionalDataType: "Float32"
+      - name: "where"
+        in: "query"
+        description: "filter operators (lt, lte, gt, gte, eq, neq, like, nlike)"
+        required: false
+        type: "string"
+        x-exportParamName: "Where"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/groupObject"
+        400:
+          description: "Bad Request"
+    post:
+      tags:
+      - "Groups"
+      summary: "Add Group"
+      description: " |\r\n    Used to add a new `Group` object to the EMS database."
+      operationId: "AddGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "Object to sign up a new EMS User in the EMS Server"
+        required: true
+        schema:
+          $ref: "#/definitions/groupAddObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+        404:
+          description: "Group already exist"
+  /groups/fields:
+    get:
+      tags:
+      - "Groups"
+      summary: "Get Fields"
+      description: " |\r\n    Used to retrieve all the `field names` of the EMS Group\
+        \ (including the custom fields)."
+      operationId: "GetGroupFields"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/fieldGroupObject"
+  /groups/{item}:
+    get:
+      tags:
+      - "Groups"
+      summary: "Get Group"
+      description: " |\r\n    Used to retrieve all data from a `Group`. **item** is\
+        \ the unique EMS Group name in the EMS database."
+      operationId: "GetGroup"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "item"
+        in: "path"
+        description: "A group name"
+        required: true
+        type: "string"
+        x-exportParamName: "Item"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/groupObject"
+    put:
+      tags:
+      - "Groups"
+      summary: "Update Group"
+      description: " |\r\n    Used to update a `Group`. **item** is the unique EMS\
+        \ Group name in the EMS database."
+      operationId: "UpdateGroup"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "item"
+        in: "path"
+        description: "A group name"
+        required: true
+        type: "string"
+        x-exportParamName: "Item"
+      - in: "body"
+        name: "body"
+        description: "Object to sign up a new EMS User in the EMS Server"
+        required: true
+        schema:
+          $ref: "#/definitions/updateGroupObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/updatedGroupObject"
+        404:
+          description: "Group not found / User not found"
+    delete:
+      tags:
+      - "Groups"
+      summary: "Delete Group"
+      description: " |\r\n    Used to delete a `Group`. **item** is the unique EMS\
+        \ Group name in the EMS database."
+      operationId: "DeleteGroup"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "item"
+        in: "path"
+        description: "A group name"
+        required: true
+        type: "string"
+        x-exportParamName: "Item"
+      responses:
+        204:
+          description: "No Content"
+        404:
+          description: "Group not found"
+  /installations:
+    get:
+      tags:
+      - "Installations"
+      summary: "Get Installations"
+      description: " |\r\n    Used to retrieve all data from `Installation`.\r\n \
+        \   Optional query param of **skip, limit, order, where** determines \r\n\
+        \    size of returned array, filtered and order by."
+      operationId: "GetInstallations"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "skip"
+        in: "query"
+        description: "users skipped"
+        required: false
+        type: "number"
+        format: "int32"
+        x-exportParamName: "Skip"
+        x-optionalDataType: "Float32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of results to return"
+        required: false
+        type: "number"
+        x-exportParamName: "Limit"
+        x-optionalDataType: "Float32"
+      - name: "order"
+        in: "query"
+        description: "order ascending or descending (asc, desc)"
+        required: false
+        type: "number"
+        x-exportParamName: "Order"
+        x-optionalDataType: "Float32"
+      - name: "where"
+        in: "query"
+        description: "filter operators (lt, lte, gt, gte, eq, neq, like, nlike)"
+        required: false
+        type: "string"
+        x-exportParamName: "Where"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/installationObject"
+    post:
+      tags:
+      - "Installations"
+      summary: "Add Installation"
+      description: " |\r\n    Used to add a new `Installation` object to the EMS database."
+      operationId: "AddInstallation"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "Object to sign up a new EMS User in the EMS Server"
+        required: true
+        schema:
+          $ref: "#/definitions/installationAddObject"
+        x-exportParamName: "Body"
+      responses:
+        201:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/installationAddedObject"
+        404:
+          description: "Installation already exists"
+  /installations/channels:
+    get:
+      tags:
+      - "Installations"
+      summary: "Get Installation Channels"
+      description: " |\r\n     Used to retrieve the available channels to which the\
+        \ device has subscribed. **id** is the unique EMS Installation identifier\
+        \ (InstallationID) in the EMS database."
+      operationId: "GetChannels"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/channelName"
+  /installations/fields:
+    get:
+      tags:
+      - "Installations"
+      summary: "Get Fields"
+      description: " |\r\n    Used to retrieve all the `field names` of the EMS Installation\
+        \ (including the custom fields)."
+      operationId: "GetInstallationFields"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/fieldInstallationObject"
+  /installations/{id}:
+    get:
+      tags:
+      - "Installations"
+      summary: "Get Installation"
+      description: " |\r\n    Used to retrieve all data from a specific `Installation`\
+        \ (registered device). **id** is the unique EMS Installation identifier (InstallationID)\
+        \ in the EMS database."
+      operationId: "GetInstallation"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A Installation ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/installationObject"
+        404:
+          description: "Group not found / User not found"
+    put:
+      tags:
+      - "Installations"
+      summary: "Update Installation"
+      description: " |\r\n    Used to update an `Installation`. **id** is the unique\
+        \ EMS Installation identifier (IID) in the EMS database."
+      operationId: "UpdateInstallation"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A Installation ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        description: "Installation fields to update"
+        required: true
+        schema:
+          $ref: "#/definitions/updateInstallationObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/updatedInstallationObject"
+        404:
+          description: "Not Found"
+    delete:
+      tags:
+      - "Installations"
+      summary: "Delete Installation"
+      description: " |\r\n    Used to delete an `Installation`. **id** is the unique\
+        \ EMS Installation identifier (IID) in the EMS database."
+      operationId: "DeleteInstallation"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A Installation ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        204:
+          description: "No Content"
+        404:
+          description: "Not Found"
+  /push:
+    post:
+      tags:
+      - "Push"
+      summary: "Send Push"
+      description: "Used to send a push notification message to a registered device"
+      operationId: "Send"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "Object containing the Push Message data structure"
+        required: true
+        schema:
+          $ref: "#/definitions/pushObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+  /users:
+    get:
+      tags:
+      - "Users"
+      summary: "Get Users"
+      description: " |\r\n    Used to retrieve all data from `Users`.\r\n    Optional\
+        \ query param of **skip, limit, order, where** determines \r\n    size of\
+        \ returned array, filtered and order by."
+      operationId: "GetUsers"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "skip"
+        in: "query"
+        description: "users skipped"
+        required: false
+        type: "number"
+        format: "int32"
+        x-exportParamName: "Skip"
+        x-optionalDataType: "Float32"
+      - name: "limit"
+        in: "query"
+        description: "maximum number of results to return"
+        required: false
+        type: "number"
+        x-exportParamName: "Limit"
+        x-optionalDataType: "Float32"
+      - name: "order"
+        in: "query"
+        description: "order ascending or descending (asc, desc)"
+        required: false
+        type: "number"
+        x-exportParamName: "Order"
+        x-optionalDataType: "Float32"
+      - name: "where"
+        in: "query"
+        description: "filter operators (lt, lte, gt, gte, eq, neq, like, nlike)"
+        required: false
+        type: "string"
+        x-exportParamName: "Where"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/userObject"
+        400:
+          description: "Bad Request"
+    post:
+      tags:
+      - "Users"
+      summary: "Add User"
+      description: " |\r\n    Used to add a new `User` object to the EMS database."
+      operationId: "AddUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "Object to add a new EMS User in the EMS Server"
+        required: true
+        schema:
+          $ref: "#/definitions/userCredentialsObject"
+        x-exportParamName: "Body"
+      responses:
+        201:
+          description: "User Created"
+          schema:
+            $ref: "#/definitions/useridObject"
+        409:
+          description: "User already exists"
+  /users/fields:
+    get:
+      tags:
+      - "Users"
+      summary: "Get Fields"
+      description: " |\r\n    Used to retrieve all the `field names` of the EMS Users\
+        \ (including the custom fields)."
+      operationId: "GetUserFields"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/fieldObject"
+  /users/login:
+    post:
+      tags:
+      - "Users"
+      summary: "Log In"
+      description: " |\r\n    Logs in to the EMS Server with a specific EMS User."
+      operationId: "LoginUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "A user object"
+        required: true
+        schema:
+          $ref: "#/definitions/userCredentialsObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/userTokenObject"
+        401:
+          description: "The credentials of the request are not authorized for the\
+            \ requested operation."
+        404:
+          description: "User not found"
+  /users/logout:
+    post:
+      tags:
+      - "Users"
+      summary: "sPostLogoutSummaryTitle"
+      description: "sPostLogoutSummaryDesc"
+      operationId: "LogoutUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "OK"
+        404:
+          description: "User not found"
+  /users/signup:
+    post:
+      tags:
+      - "Users"
+      summary: "Sign Up  User"
+      description: " |\r\n    Signs up to the EMS Server with an appropriate EMS User."
+      operationId: "SignupUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - in: "body"
+        name: "body"
+        description: "Object to sign up a new EMS User in the EMS Server"
+        required: true
+        schema:
+          $ref: "#/definitions/userCredentialsObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/userSignUpResponseObject"
+        409:
+          description: "User already exists"
+  /users/{id}:
+    get:
+      tags:
+      - "Users"
+      summary: "Get User"
+      description: " |\r\n    Used to retrieve all data from a `User`. **id** is the\
+        \ unique EMS User identifier (UID) in the EMS database."
+      operationId: "GetUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A user ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/userObject"
+    put:
+      tags:
+      - "Users"
+      summary: "Update User"
+      description: " |\r\n    Used to update a `User`. **id** is the unique EMS User\
+        \ identifier (UID) in the EMS database."
+      operationId: "UpdateUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A user ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      - in: "body"
+        name: "body"
+        description: "Add any fieldName"
+        required: true
+        schema:
+          $ref: "#/definitions/updateObject"
+        x-exportParamName: "Body"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            $ref: "#/definitions/updatedObject"
+        400:
+          description: "Operation could not be completed because one or more dynamic\
+            \ names conflicts with a static name."
+    delete:
+      tags:
+      - "Users"
+      summary: "Delete User"
+      description: " |\r\n    Used to delete a `User`. **id** is the unique EMS User\
+        \ identifier (UID) in the EMS database."
+      operationId: "DeleteUser"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A user ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        204:
+          description: "No Content"
+        404:
+          description: "The request does not identify a known application, resource,\
+            \ endpoint, or entity"
+  /users/{id}/groups:
+    get:
+      tags:
+      - "Users"
+      summary: "Get User Groups"
+      description: " |\r\n    Used to retrieve the EMS Groups the EMS User belongs\
+        \ to. **id** is the unique EMS User identifier (UID) in the EMS database."
+      operationId: "GetUserGroups"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      - name: "id"
+        in: "path"
+        description: "A user ID"
+        required: true
+        type: "string"
+        x-exportParamName: "Id"
+      responses:
+        200:
+          description: "OK"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/groupName"
+  /version:
+    get:
+      tags:
+      - "Version"
+      summary: "Get version"
+      description: " |\r\n    Used to retrieve the `Version` of the EMS Server."
+      operationId: "GetVersion"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "X-Embarcadero-Application-Id"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoApplicationId"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-App-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoAppSecret"
+        x-optionalDataType: "String"
+      - name: "X-Embarcadero-Master-Secret"
+        in: "header"
+        required: false
+        type: "string"
+        x-exportParamName: "XEmbarcaderoMasterSecret"
+        x-optionalDataType: "String"
+      responses:
+        200:
+          description: "Ok. Provides the current version of the EMS Server"
+          schema:
+            $ref: "#/definitions/versionObject"
+definitions:
+  versionObject:
+    type: "object"
+    properties:
+      version:
+        type: "string"
+      server:
+        type: "string"
+    example:
+      server: "server"
+      version: "version"
+  _metaObject:
+    type: "object"
+    required:
+    - "created"
+    - "creator"
+    properties:
+      creator:
+        type: "string"
+      created:
+        type: "string"
+      updated:
+        type: "string"
+    example:
+      creator: "creator"
+      created: "created"
+      updated: "updated"
+  userObject:
+    type: "object"
+    required:
+    - "_meta"
+    - "id"
+    - "username"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      _meta:
+        $ref: "#/definitions/_metaObject"
+    example:
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      id: "id"
+      username: "username"
+    additionalProperties:
+      type: "string"
+  userTokenObject:
+    type: "object"
+    required:
+    - "_meta"
+    - "id"
+    - "sessiontoken"
+    - "username"
+    properties:
+      id:
+        type: "string"
+      username:
+        type: "string"
+      _meta:
+        $ref: "#/definitions/_metaObject"
+      sessiontoken:
+        type: "string"
+    example:
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      id: "id"
+      sessiontoken: "sessiontoken"
+      username: "username"
+  userCredentialsObject:
+    type: "object"
+    required:
+    - "password"
+    - "username"
+    properties:
+      username:
+        type: "string"
+      password:
+        type: "string"
+  userSignUpResponseObject:
+    type: "object"
+    required:
+    - "_id"
+    - "sessionToken"
+    properties:
+      _id:
+        type: "string"
+      sessionToken:
+        type: "string"
+    example:
+      sessionToken: "sessionToken"
+      _id: "_id"
+  useridObject:
+    type: "object"
+    required:
+    - "_id"
+    properties:
+      _id:
+        type: "string"
+    example:
+      _id: "_id"
+  updateObject:
+    type: "object"
+    properties:
+      fieldName:
+        type: "string"
+  updatedObject:
+    type: "object"
+    required:
+    - "updated"
+    properties:
+      updated:
+        type: "string"
+    example:
+      updated: "updated"
+  groupName:
+    type: "string"
+  fieldObject:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      fields:
+        type: "array"
+        items:
+          $ref: "#/definitions/fieldObject_fields"
+      custom:
+        type: "boolean"
+    example:
+      custom: true
+      name: "name"
+      fields:
+      - name: "name"
+      - name: "name"
+  _metaGroupObject:
+    type: "object"
+    required:
+    - "created"
+    - "creator"
+    properties:
+      creator:
+        type: "string"
+      created:
+        type: "string"
+      updated:
+        type: "string"
+    example:
+      creator: "creator"
+      created: "created"
+      updated: "updated"
+  groupObject:
+    type: "object"
+    required:
+    - "_meta"
+    - "name"
+    properties:
+      name:
+        type: "string"
+      _meta:
+        $ref: "#/definitions/_metaGroupObject"
+      users:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      name: "name"
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      users:
+      - "users"
+      - "users"
+    additionalProperties:
+      type: "string"
+  groupAddObject:
+    type: "object"
+    required:
+    - "groupname"
+    properties:
+      groupname:
+        type: "string"
+  updateGroupObject:
+    type: "object"
+    properties:
+      fieldName:
+        type: "string"
+      users:
+        type: "array"
+        items:
+          type: "string"
+  updatedGroupObject:
+    type: "object"
+    required:
+    - "updated"
+    properties:
+      updated:
+        type: "string"
+    example:
+      updated: "updated"
+  fieldGroupObject:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      fields:
+        type: "array"
+        items:
+          $ref: "#/definitions/fieldObject_fields"
+      custom:
+        type: "boolean"
+    example:
+      custom: true
+      name: "name"
+      fields:
+      - name: "name"
+      - name: "name"
+  _metaInstallationObject:
+    type: "object"
+    required:
+    - "created"
+    - "creator"
+    properties:
+      creator:
+        type: "string"
+      created:
+        type: "string"
+      updated:
+        type: "string"
+    example:
+      creator: "creator"
+      created: "created"
+      updated: "updated"
+  installationObject:
+    type: "object"
+    required:
+    - "_id"
+    - "_meta"
+    - "deviceToken"
+    - "deviceType"
+    properties:
+      _id:
+        type: "string"
+      deviceToken:
+        type: "string"
+      deviceType:
+        type: "string"
+        enum:
+        - "ios"
+        - "android"
+      _meta:
+        $ref: "#/definitions/_metaInstallationObject"
+      channels:
+        type: "array"
+        items:
+          type: "string"
+    example:
+      deviceType: "ios"
+      channels:
+      - "channels"
+      - "channels"
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      _id: "_id"
+      deviceToken: "deviceToken"
+    additionalProperties:
+      type: "string"
+  installationAddObject:
+    type: "object"
+    required:
+    - "deviceToken"
+    - "deviceType"
+    properties:
+      deviceToken:
+        type: "string"
+      deviceType:
+        type: "string"
+      channels:
+        type: "array"
+        items:
+          type: "string"
+    additionalProperties:
+      type: "string"
+  installationAddedObject:
+    type: "object"
+    required:
+    - "_id"
+    properties:
+      _id:
+        type: "string"
+    example:
+      _id: "_id"
+  updateInstallationObject:
+    type: "object"
+    properties:
+      channels:
+        type: "array"
+        items:
+          type: "string"
+    additionalProperties:
+      type: "string"
+  updatedInstallationObject:
+    type: "object"
+    required:
+    - "updated"
+    properties:
+      updated:
+        type: "string"
+    example:
+      updated: "updated"
+  channelName:
+    type: "string"
+  fieldInstallationObject:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      fields:
+        type: "array"
+        items:
+          $ref: "#/definitions/fieldObject_fields"
+      custom:
+        type: "boolean"
+    example:
+      custom: true
+      name: "name"
+      fields:
+      - name: "name"
+      - name: "name"
+  pushObject:
+    type: "object"
+    required:
+    - "data"
+    - "where"
+    properties:
+      data:
+        $ref: "#/definitions/pushDataObject"
+      channels:
+        type: "array"
+        items:
+          type: "string"
+      where:
+        $ref: "#/definitions/pushWhereObject"
+  pushDataObject:
+    type: "object"
+    properties:
+      gcm:
+        $ref: "#/definitions/pushDataObject_gcm"
+      aps:
+        $ref: "#/definitions/pushDataObject_aps"
+      extras:
+        $ref: "#/definitions/pushDataObject_extras"
+  pushWhereObject:
+    type: "object"
+    properties:
+      deviceType:
+        type: "string"
+        enum:
+        - "ios"
+        - "android"
+      deviceToken:
+        $ref: "#/definitions/pushWhereObject_deviceToken"
+  _metaEdgeModuleObject:
+    type: "object"
+    required:
+    - "created"
+    - "creator"
+    properties:
+      creator:
+        type: "string"
+      created:
+        type: "string"
+      updated:
+        type: "string"
+    example:
+      creator: "creator"
+      created: "created"
+      updated: "updated"
+  edgeModuleObject:
+    type: "object"
+    required:
+    - "_id"
+    - "_meta"
+    - "modulename"
+    - "protocol"
+    - "protocolprops"
+    properties:
+      modulename:
+        type: "string"
+      _id:
+        type: "string"
+      protocol:
+        type: "string"
+      protocolprops:
+        type: "string"
+        pattern: "\\{\\\\\"port\\\\\":[0-9]{2,5},\\\\\"host\\\\\":\\\\\"([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})\\\
+          \\\"\\}"
+      _meta:
+        $ref: "#/definitions/_metaEdgeModuleObject"
+    example:
+      protocol: "protocol"
+      protocolprops: "protocolprops"
+      modulename: "modulename"
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      _id: "_id"
+    additionalProperties:
+      type: "string"
+  edgeModuleResourceObject:
+    type: "object"
+    required:
+    - "_meta"
+    - "moduleid"
+    - "modulename"
+    - "resourcename"
+    properties:
+      resourcename:
+        type: "string"
+      modulename:
+        type: "string"
+      moduleid:
+        type: "string"
+      _meta:
+        $ref: "#/definitions/_metaEdgeModuleObject"
+    example:
+      modulename: "modulename"
+      _meta:
+        creator: "creator"
+        created: "created"
+        updated: "updated"
+      resourcename: "resourcename"
+      moduleid: "moduleid"
+    additionalProperties:
+      type: "string"
+  edgeModuleAddObject:
+    type: "object"
+    required:
+    - "modulename"
+    - "protocol"
+    - "protocolprops"
+    properties:
+      modulename:
+        type: "string"
+      protocol:
+        type: "string"
+      protocolprops:
+        type: "string"
+        pattern: "\\{\\\\\"port\\\\\":[0-9]{2,5},\\\\\"host\\\\\":\\\\\"([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})\\\
+          \\\"\\}"
+    additionalProperties:
+      type: "string"
+  edgeModuleAddedObject:
+    type: "object"
+    required:
+    - "_id"
+    - "modulename"
+    properties:
+      _id:
+        type: "string"
+      modulename:
+        type: "string"
+    example:
+      modulename: "modulename"
+      _id: "_id"
+  edgeModuleResourceAddObject:
+    type: "object"
+    required:
+    - "resourcename"
+    properties:
+      resourcename:
+        type: "string"
+    additionalProperties:
+      type: "string"
+  edgeModuleResourceAddedObject:
+    type: "object"
+    required:
+    - "resourcename"
+    properties:
+      resourcename:
+        type: "string"
+    example:
+      resourcename: "resourcename"
+  edgeModuleUpdateObject:
+    type: "object"
+    required:
+    - "modulename"
+    - "protocol"
+    - "protocolprops"
+    properties:
+      modulename:
+        type: "string"
+      protocol:
+        type: "string"
+      protocolprops:
+        type: "string"
+        pattern: "\\{\\\\\"port\\\\\":[0-9]{2,5},\\\\\"host\\\\\":\\\\\"([0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3}.[0-9]{1,3})\\\
+          \\\"\\}"
+    additionalProperties:
+      type: "string"
+  edgeModuleUpdatedObject:
+    type: "object"
+    required:
+    - "updated"
+    properties:
+      updated:
+        type: "string"
+    example:
+      updated: "updated"
+  edgeModuleResourceUpdateObject:
+    type: "object"
+    properties:
+      resourcename:
+        type: "string"
+    additionalProperties:
+      type: "string"
+  edgeModuleResourceUpdatedObject:
+    type: "object"
+    required:
+    - "updated"
+    properties:
+      updated:
+        type: "string"
+    example:
+      updated: "updated"
+  fieldsEdgeModuleObject:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      name:
+        type: "string"
+      fields:
+        type: "array"
+        items:
+          $ref: "#/definitions/fieldObject_fields"
+      custom:
+        type: "boolean"
+    example:
+      custom: true
+      name: "name"
+      fields:
+      - name: "name"
+      - name: "name"
+  fieldObject_fields:
+    properties:
+      name:
+        type: "string"
+    example:
+      name: "name"
+  pushDataObject_gcm:
+    properties:
+      message:
+        type: "string"
+      title:
+        type: "string"
+  pushDataObject_aps:
+    properties:
+      alert:
+        type: "string"
+      badge:
+        type: "string"
+      sound:
+        type: "string"
+  pushDataObject_extras:
+    properties:
+      message:
+        type: "string"
+  pushWhereObject_deviceToken:
+    required:
+    - "$in"
+    properties:
+      $in:
+        type: "array"
+        items:
+          type: "string"
+    description: "$in"
